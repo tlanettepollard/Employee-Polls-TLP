@@ -1,5 +1,33 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Employee Polls Project: Udacity
 
+## Overview
+
+
+
+## Screen Shots
+
+## App Functionality
+
+- Login
+- Homepage
+- Poll details
+- 404 page
+- Voting
+- Post Question
+- Leaderboard
+
+## Installation and Launch Instructions
+
+## References and Resources
+
+### References
+
+Avatar images:
+
+- [Pixabay](https://pixabay.com/)
+* [SketchandBuild](https://www.flaticon.com/free-icons/afro)
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 ## Available Scripts
 
 In the project directory, you can run:
