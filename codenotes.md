@@ -6,4 +6,12 @@ Starting today while working on Chirper App. Printed out slides with the sample 
 
 ## 06/16/2022
 
-Hi. I'm back again today. I'm trying to follow along with the Chirper app in structuring Employee Polls app.
+Hi. I'm back again today. I'm trying to follow along with the Chirper app in structuring Employee Polls app. Now I am working on the hierarchy of my app components:
+
+### Login Component
+
+- App: container for the component;
+  - Content Wrapper: wrapper for the content;
+  - Header: title for the view;
+  - Grid: formats content;
+    - Form: dropdown with list of user accounts and login button;
