@@ -3,9 +3,9 @@ import {
 	_getQuestions,
 	_saveQuestionAnswer,
 	_saveQuestion,
-} from './_DATA';
+} from './_DATA.js';
 
-export function getInitalData() {
+export function getInitialData() {
 	return Promise.all([_getUsers(), _getQuestions()]).then(
 		([users, questions]) => ({
 			users,
@@ -14,10 +14,11 @@ export function getInitalData() {
 	);
 }
 
-export function saveQuestionAnswer({ authedUser, qid, answer }) {
-	return _saveQuestionAnswer({ authedUser, qid, answer });
+export function saveQuestion(question) {
+	return _saveQuestion(question);
 }
 
-export function _saveQuestion(info) {
-	return _saveQuestion(info);
+export function saveQuestionAnswer(authedUser, qid, answer) {
+	// console.log('info', {authedUser, qid, answer});
+	return _saveQuestionAnswer({ authedUser, qid, answer });
 }
