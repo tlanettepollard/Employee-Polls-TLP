@@ -105,8 +105,20 @@ form {
 	margin: auto;
 }
 
-.App {
+.app,
+.app-heading {
 	text-align: center;
+}
+
+.app-heading {
+	padding: 2.5rem;
+}
+
+.app-logo {
+	width: 50%;
+	height: auto;
+	margin: auto;
+	padding: 20px;
 }
 
 /***** Nav ******/
