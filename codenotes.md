@@ -15,3 +15,14 @@ Hi. I'm back again today. I'm trying to follow along with the Chirper app in str
   - Header: title for the view;
   - Grid: formats content;
     - Form: dropdown with list of user accounts and login button;
+
+## 06/18/2022
+
+Hi, I'm back. I'm still working on the **Login Component**.
+So the hierachy for my Login page should be:
+
+- Login
+  - Login Header
+  * Login Grid Layout
+    - Brand Image
+    - Login Form
