@@ -1,5 +1,5 @@
 export const SET_AUTHED_USER = 'SET_AUTHED_USER';
-export const SIGNED_OUT_USER = 'SIGNED_OUT_USER';
+export const UNSET_AUTHED_USER = 'SIGNED_OUT_USER';
 
 // Action creator for signed in user
 export function setAuthedUser(id) {
@@ -10,10 +10,9 @@ export function setAuthedUser(id) {
 }
 
 // Action creator to sign out current user
-export function signedOutUser() {
+export function unsetAuthedUser() {
 	return {
-		type: SIGNED_OUT_USER,
+		type: UNSET_AUTHED_USER,
 	};
 }
-
 
