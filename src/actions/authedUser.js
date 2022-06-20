@@ -15,5 +15,3 @@ export function signedOutUser() {
 		type: SIGNED_OUT_USER,
 	};
 }
-
-
