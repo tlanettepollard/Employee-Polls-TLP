@@ -26,3 +26,7 @@ So the hierachy for my Login page should be:
   * Login Grid Layout
     - Brand Image
     - Login Form
+
+
+Resources
+* [How to Convert Class Components into Functional Components](https://medium.com/geekculture/how-to-convert-class-component-into-functional-components-in-react-ec87ca1a5b53)
