@@ -16,6 +16,7 @@ function App(props) {
 
 	return (
 		<Router>
+		
 			<div className='app'>
 				<LoadingBar />
 				<Container>
@@ -26,8 +27,8 @@ function App(props) {
 	);
 }
 
-const mapStateToProps = ({ authedUser }) => ({
-	loading: authedUser === null,
+const mapStateToProps = ({ authedUser, questions, users }) => ({
+	loading: questions==={} || users==={}, authedUser
 });
 
 export default connect(mapStateToProps)(App);
