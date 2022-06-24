@@ -106,16 +106,24 @@ form {
 }
 
 .app,
-.app-heading {
+.app-heading,
+.app-subheading {
 	text-align: center;
 }
 
 .app-heading {
-	padding: 2.5rem;
+	padding: 1.5rem;
+	font-size: 1.5em;
+	font-weight: 700;
+}
+
+.app-subheading {
+	padding: 1rem;
+	font-weight: 400;
 }
 
 .app-logo {
-	width: 50%;
+	width: 60%;
 	height: auto;
 	margin: auto;
 	padding: 20px;
