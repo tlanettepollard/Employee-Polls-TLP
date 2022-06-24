@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { handleInitialData } from '../actions/shared';
 import { connect } from 'react-redux';
 import { LoadingBar } from 'react-redux-loading';
-import Login from './Login';
+//import Login from './Login';
 import '../App.css';
 import { Container } from 'react-bootstrap';
 //import Login from './Login';
@@ -20,7 +20,8 @@ const App = (props) => {
 				<LoadingBar />
 				<Container>
 					<h1 className='app-heading'>Employee Polls</h1>
-					<Login />
+					<h3 className='app-subheading'>Please sign in to continue. </h3>
+					
 				</Container>
 			</div>
 		</Router>

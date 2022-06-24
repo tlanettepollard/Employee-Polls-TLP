@@ -16,17 +16,4 @@ export function signedOutUser() {
 	};
 }
 
-export function handleLoginAction(username, password) {
-	return (dispatch, getState) => {
-		const { users } = getState();
-		if (users[username] != null && users[username].password === password) {
-			dispatch(setAuthedUser(username));
-		}
-	};
-}
 
-export function handleLogoutAction() {
-	return (dispatch) => {
-		dispatch(signedOutUser());
-	};
-}
