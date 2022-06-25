@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { useState } from 'react';
 import { setAuthedUser } from '../actions/authedUser';
-import { useNavigate } from 'react-router-dom';
+//import { useNavigate } from 'react-router-dom';
 import { LoadingBar } from 'react-redux-loading';
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
@@ -19,13 +19,13 @@ import zoshikanlu from '../images/AvatarZenobia.png';
 
 const Login = ({ users, dispatch }) => {
 	const [userSelected, setUserSelected] = useState('none');
-	const navigate = useNavigate();
+	//const navigate = useNavigate();
 
 	const handleLogin = (e) => {
 		e.preventDefault();
 
 		dispatch(setAuthedUser(userSelected));
-		navigate('/');
+		//navigate('/');
 	};
 
 	return (
@@ -34,6 +34,10 @@ const Login = ({ users, dispatch }) => {
 			<Row className='justify-content-center align-items-center min-vh-100'>
 				<Col xs={12} md={4}>
 					<Card bg='light' className='text-center'>
+						<Card.Header>
+							<h1 className='app-heading'>Employee Polls</h1>
+							<p className='app-subheading'>Please sign in to continue</p>
+						</Card.Header>
 						<Card.Img
 							variant='top'
 							src={companyImage}
