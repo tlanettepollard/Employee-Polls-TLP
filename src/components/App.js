@@ -4,10 +4,9 @@ import { useEffect } from 'react';
 import { handleInitialData } from '../actions/shared';
 import { connect } from 'react-redux';
 import { LoadingBar } from 'react-redux-loading';
-//import Login from './Login';
+import Login from './Login';
 import '../App.css';
 import { Container } from 'react-bootstrap';
-
 
 const App = (props) => {
 	useEffect(() => {
@@ -19,9 +18,9 @@ const App = (props) => {
 			<div className='app'>
 				<LoadingBar />
 				<Container>
-					<h1 className='app-heading'>Employee Polls</h1>
-					<h3 className='app-subheading'>Please sign in to continue. </h3>
-					
+					<h1 className='app-heading'>Welcome to the Employee Polls!</h1>
+					<p className='app-subheading'>Please sign in to continue. </p>
+					<Login />
 				</Container>
 			</div>
 		</Router>
