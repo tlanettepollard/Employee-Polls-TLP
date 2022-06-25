@@ -7,7 +7,7 @@ import { LoadingBar } from 'react-redux-loading';
 //import Login from './Login';
 import '../App.css';
 import { Container } from 'react-bootstrap';
-//import Login from './Login';
+
 
 const App = (props) => {
 	useEffect(() => {
