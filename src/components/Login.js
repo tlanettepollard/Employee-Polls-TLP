@@ -10,7 +10,12 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+
 import companyImage from '../images/companyavatar.png';
+import sarahedo from '../images/AvatarSarah.png';
+import tylermcginnis from '../images/AvatarTyler.png';
+import mtsamis from '../images/AvatarMike.png';
+import zoshikanlu from '../images/AvatarZenobia.png';
 
 const Login = ({ users, dispatch }) => {
 	const [userSelected, setUserSelected] = useState('none');
@@ -36,27 +41,54 @@ const Login = ({ users, dispatch }) => {
 							className='app-logo'
 						/>
 						<Card.Body>
-							<Card.Title className='text-center'>Sign In</Card.Title>
+							<Card.Title className='text-center form-title'>
+								Sign In
+							</Card.Title>
+							{userSelected === 'sarahedo' && (
+								<img src={sarahedo} className='avatar-img' alt='avatar' />
+							)}
+							{userSelected === 'tylermcginnis' && (
+								<img src={tylermcginnis} alt='avatar' className='avatar-img' />
+							)}
+							{userSelected === 'mtsamis' && (
+								<img src={mtsamis} alt='avatar' className='avatar-img' />
+							)}
+							{userSelected === 'zoshikanlu' && (
+								<img src={zoshikanlu} alt='avatar' className='avatar-img' />
+							)}
 							<Form data-testid='submit-form'>
-								<Form.Select
-									aria-label='Select a User'
-									className='login-form'
-									onChange={(e) => setUserSelected(e.target.value)}
-									value={userSelected}>
-									<option value='none'>Select a User...</option>
-									{users.map((user) => (
-										<option key={user.id} value={user.id}>
-											{user.name}
-										</option>
-									))}
-								</Form.Select>
-								<Button
-									onClick={handleLogin}
-									type='submit'
-									variant='outline-dark'
-									data-testid='submit-btn'>
-									Log In
-								</Button>
+								<Form.Group>
+									<Form.Control
+										as='select'
+										size='lg'
+										aria-label='Select a User'
+										className='login-form rounded-0 shadow'
+										onChange={(e) => setUserSelected(e.target.value)}
+										value={userSelected}>
+										<option value='none'>Select a User...</option>
+										{users.map((user) => (
+											<option key={user.id} value={user.id}>
+												{user.name}
+											</option>
+										))}
+									</Form.Control>
+								</Form.Group>
+								<Form.Group>
+									{userSelected === 'none' ? (
+										<Button disabled className='login-form'>
+											Login
+										</Button>
+									) : (
+										<Button
+											onClick={handleLogin}
+											type='submit'
+											variant='outline-dark'
+											data-testid='submit-btn'
+											className='login-form'>
+											Log In
+										</Button>
+									)}
+								</Form.Group>
 							</Form>
 						</Card.Body>
 					</Card>
