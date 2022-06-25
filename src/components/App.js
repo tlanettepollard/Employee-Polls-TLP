@@ -18,8 +18,6 @@ const App = (props) => {
 			<div className='app'>
 				<LoadingBar />
 				<Container>
-					<h1 className='app-heading'>Welcome to the Employee Polls!</h1>
-					<p className='app-subheading'>Please sign in to continue. </p>
 					<Login />
 				</Container>
 			</div>
