@@ -3,12 +3,7 @@ import { connect } from 'react-redux';
 import { useState } from 'react';
 import { setAuthedUser } from '../actions/authedUser';
 import { LoadingBar } from 'react-redux-loading';
-import Card from 'react-bootstrap/Card';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+
 import companyLogo from '../images/companyavatar.png';
 
 const Login = ({ users, dispatch }) => {
@@ -20,61 +15,42 @@ const Login = ({ users, dispatch }) => {
 	};
 
 	return (
-		<Container>
+		<div className='container'>
 			<LoadingBar />
-			<Row className='just-content-center align-items-center min-vh-100'>
-				<Col xs={12} md={4}>
-					<Card bg='light' className='text-center'>
-						<Card.Header className='text-center'>
-							<h1>Welcome to Employee Polls!</h1>
-							<h3>Please sign in to continue.</h3>
-						</Card.Header>
-						<Container>
-							<img src={companyLogo} alt='company logo' className='app-logo' />
-						</Container>
-						<Card.Body>
-							<Card.Title className='text-center form-title'>
-								<h2>Sign In</h2>
-							</Card.Title>
-							<Form data-testid='submit-form'>
-								<Form.Group>
-									<Form.Control
-										as='select'
-										aria-label='Select a user...'
-										className='user-dropdown'
-										onChange={(e) => setUserSelected(e.target.value)}
-										value={userSelected}>
-										<option value='none'>Select a User...</option>
-										{users.map((user) => (
-											<option key={user.id} value={user.id}>
-												{user.name}
-											</option>
-										))}
-									</Form.Control>
-								</Form.Group>
-
-								<Form.Group>
-									{userSelected === 'none' ? (
-										<Button disabled className='login-btn'>
-											Sign In
-										</Button>
-									) : (
-										<Button
-											onClick={handleLogin}
-											type='submit'
-											variant='outline-dark'
-											data-testid='submit-btn'
-											className='login-btn'>
-											Sign In
-										</Button>
-									)}
-								</Form.Group>
-							</Form>
-						</Card.Body>
-					</Card>
-				</Col>
-			</Row>
-		</Container>
+			<div>
+				<h1 className='text-center app-heading'>Welcome to Employee Polls!</h1>
+				<h3 className='text-center app-subheading'>
+					Please sign in to continue.
+				</h3>
+			</div>
+			<img src={companyLogo} alt='company logo' className='app-logo' />
+			<form className='login'>
+				<h2 className='text-center form-title'>Sign In</h2>
+				<select
+					aria-label='Select a User'
+					className='login-form'
+					onChange={(e) => setUserSelected(e.target.value)}
+					value={userSelected}>
+					<option value='none' disabled className='user-dropdown'>
+						Select a User...
+					</option>
+					{users.map((user) => (
+						<option key={user.id} value={user.id}>
+							{user.name}
+						</option>
+					))}
+				</select>
+				{userSelected === 'none' ? (
+					<button disabled className='login-btn'>
+						Sign In
+					</button>
+				) : (
+					<button onClick={handleLogin} className='login-btn'>
+						Sign In
+					</button>
+				)}
+			</form>
+		</div>
 	);
 };
 

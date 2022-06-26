@@ -126,11 +126,10 @@ form {
 	font-weight: 400;
 }
 
-
 .app-logo {
 	width: 60%;
 	height: auto;
-	margin: auto;
+	margin: 20px auto;
 	padding: 20px;
 }
 
@@ -143,12 +142,33 @@ form {
 
 /***** Nav ******/
 
-
 /***** Form *****/
 .form-title {
+	margin: 15px auto;
 	padding: 1.25rem;
 }
 
 .login-form {
+	margin: 1.875rem;
 	padding: 1.25rem;
+}
+
+.select {
+	width: 80%;
+	margin: auto;
+}
+
+.login select {
+	font-size: 16px;
+}
+
+.user-dropdown {
+	border-radius: 3.125rem;
+}
+.login-btn {
+	width: 80%;
+	height: 3.75rem;
+	margin: 20px auto;
+	font-size: 1rem;
+	font-weight: 700;
 }
