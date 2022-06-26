@@ -4,6 +4,7 @@ import { handleInitialData } from '../actions/shared';
 import { connect } from 'react-redux';
 import { LoadingBar } from 'react-redux-loading';
 import Login from './Login';
+//import PageNavbar from './PageNavbar';
 import Container from 'react-bootstrap/Container';
 import '../App.css';
 

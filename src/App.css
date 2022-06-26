@@ -129,7 +129,7 @@ form {
 .app-logo {
 	width: 60%;
 	height: auto;
-	margin: 20px auto;
+	margin: auto;
 	padding: 20px;
 }
 
@@ -149,16 +149,17 @@ form {
 }
 
 .login-form {
+	width: 80%;
 	margin: 1.875rem;
 	padding: 1.25rem;
 }
 
 .select {
-	width: 80%;
+	width: 100%;
 	margin: auto;
 }
 
-.login select {
+.form select {
 	font-size: 16px;
 }
 
@@ -169,7 +170,7 @@ form {
 	width: 80%;
 	height: 3.75rem;
 	margin: 20px auto;
-	font-size: 1rem;
+	font-size: 1.25rem;
 	font-weight: 700;
 }
 
