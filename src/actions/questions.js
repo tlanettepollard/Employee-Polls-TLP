@@ -1,9 +1,9 @@
-import { saveQuestionAnswer, saveQuestion } from '../utils/api';
-import { showLoading, hideLoading } from 'react-redux-loading';
+import { saveQuestion } from '../utils/api';
+import { addUserQuestion } from './users';
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
-export const SAVE_QUESTION_ANSWER = 'SAVE_QUESTION_ANSWER';
-export const SAVE_QUESTION = 'SAVE_QUESTION';
+export const ADD_QUESTION_ANSWER = 'ADD_QUESTION_ANSWER';
+export const ADD_QUESTION = 'ADD_QUESTION';
 
 export function receiveQuestions(questions) {
 	return {
@@ -12,48 +12,29 @@ export function receiveQuestions(questions) {
 	};
 }
 
-function saveAnswer({ authedUser, qid, answer }) {
+export function addQuestionAnswer(authedUser, qid, answer) {
 	return {
-		type: SAVE_QUESTION_ANSWER,
+		type: ADD_QUESTION_ANSWER,
 		authedUser,
 		qid,
 		answer,
 	};
 }
 
-export function handleSaveAnswer(info) {
-	return (dispatch) => {
-		dispatch(showLoading());
-
-		return saveQuestionAnswer(info)
-			.then(() => dispatch(saveAnswer(info)))
-			.then(() => dispatch(hideLoading));
-	};
-}
-
-function addQuestion(question) {
-	console.log(question);
+export function addQuestion(question) {
 	return {
-		type: SAVE_QUESTION,
+		type: ADD_QUESTION,
 		question,
 	};
 }
 
-export function handleAddQuestion({ optionOneText, optionTwoText }) {
-	return (dispatch, getState) => {
-		const { authedUser } = getState();
-		dispatch(showLoading());
-
-		return saveQuestion({
-			optionOneText,
-			optionTwoText,
-			author: authedUser,
-		})
-			.then((question) => dispatch(addQuestion(question)))
-			.then(() => dispatch(hideLoading()))
-			.catch((e) => {
-				console.warn('Error in saveQuestion: ', e);
-				alert('There was an error in saving question. Try again.');
-			});
+export function handleSaveQuestion(optionOneText, optionTwoText, author) {
+	return (dispatch) => {
+		return saveQuestion({ optionOneText, optionTwoText, author }).then(
+			(question) => {
+				dispatch(addQuestion(question));
+				dispatch(addUserQuestion(question));
+			}
+		);
 	};
 }

@@ -15,3 +15,4 @@ export function removeAuthedUser() {
 		type: REMOVE_AUTHED_USER,
 	};
 }
+
