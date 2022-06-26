@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { useState } from 'react';
 import { setAuthedUser } from '../actions/authedUser';
-//import { useNavigate } from 'react-router-dom';
 import { LoadingBar } from 'react-redux-loading';
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
@@ -10,63 +9,39 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-
-import companyImage from '../images/companyavatar.png';
-import sarahedo from '../images/AvatarSarah.png';
-import tylermcginnis from '../images/AvatarTyler.png';
-import mtsamis from '../images/AvatarMike.png';
-import zoshikanlu from '../images/AvatarZenobia.png';
+import companyLogo from '../images/companyavatar.png';
 
 const Login = ({ users, dispatch }) => {
 	const [userSelected, setUserSelected] = useState('none');
-	//const navigate = useNavigate();
 
 	const handleLogin = (e) => {
 		e.preventDefault();
-
 		dispatch(setAuthedUser(userSelected));
-		//navigate('/');
 	};
 
 	return (
 		<Container>
 			<LoadingBar />
-			<Row className='justify-content-center align-items-center min-vh-100'>
+			<Row className='just-content-center align-items-center min-vh-100'>
 				<Col xs={12} md={4}>
 					<Card bg='light' className='text-center'>
-						<Card.Header>
-							<h1 className='app-heading'>Employee Polls</h1>
-							<p className='app-subheading'>Please sign in to continue</p>
+						<Card.Header className='text-center'>
+							<h1>Welcome to Employee Polls!</h1>
+							<h3>Please sign in to continue.</h3>
 						</Card.Header>
-						<Card.Img
-							variant='top'
-							src={companyImage}
-							alt='logo'
-							className='app-logo'
-						/>
+						<Container>
+							<img src={companyLogo} alt='company logo' className='app-logo' />
+						</Container>
 						<Card.Body>
 							<Card.Title className='text-center form-title'>
-								Sign In
+								<h2>Sign In</h2>
 							</Card.Title>
-							{userSelected === 'sarahedo' && (
-								<img src={sarahedo} className='avatar-img' alt='avatar' />
-							)}
-							{userSelected === 'tylermcginnis' && (
-								<img src={tylermcginnis} alt='avatar' className='avatar-img' />
-							)}
-							{userSelected === 'mtsamis' && (
-								<img src={mtsamis} alt='avatar' className='avatar-img' />
-							)}
-							{userSelected === 'zoshikanlu' && (
-								<img src={zoshikanlu} alt='avatar' className='avatar-img' />
-							)}
 							<Form data-testid='submit-form'>
 								<Form.Group>
 									<Form.Control
 										as='select'
-										size='lg'
-										aria-label='Select a User'
-										className='login-form rounded-0 shadow'
+										aria-label='Select a user...'
+										className='user-dropdown'
 										onChange={(e) => setUserSelected(e.target.value)}
 										value={userSelected}>
 										<option value='none'>Select a User...</option>
@@ -77,10 +52,11 @@ const Login = ({ users, dispatch }) => {
 										))}
 									</Form.Control>
 								</Form.Group>
+
 								<Form.Group>
 									{userSelected === 'none' ? (
-										<Button disabled className='login-form'>
-											Login
+										<Button disabled className='login-btn'>
+											Sign In
 										</Button>
 									) : (
 										<Button
@@ -88,8 +64,8 @@ const Login = ({ users, dispatch }) => {
 											type='submit'
 											variant='outline-dark'
 											data-testid='submit-btn'
-											className='login-form'>
-											Log In
+											className='login-btn'>
+											Sign In
 										</Button>
 									)}
 								</Form.Group>

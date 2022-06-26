@@ -26,3 +26,6 @@ So the hierachy for my Login page should be:
   * Login Grid Layout
     - Brand Image
     - Login Form
+
+## 06/25/2022 
+Hi, I'm back. I'm really struggling with this project. I wonder if I should've started this React Nanodegree. I need to start over because I'm so confused. 

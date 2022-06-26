@@ -1,33 +1,27 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
 import { useEffect } from 'react';
 import { handleInitialData } from '../actions/shared';
 import { connect } from 'react-redux';
 import { LoadingBar } from 'react-redux-loading';
 import Login from './Login';
+import Container from 'react-bootstrap/Container';
 import '../App.css';
-import { Container } from 'react-bootstrap';
 
 const App = (props) => {
 	useEffect(() => {
 		props.dispatch(handleInitialData());
-	}, [props, props.authedUser]);
+	});
 
 	return (
-		<Router>
-			<div className='app'>
-				<LoadingBar />
-				<Container>
-					<Login />
-				</Container>
-			</div>
-		</Router>
+		<Container>
+			<LoadingBar />
+			<Login />
+		</Container>
 	);
 };
 
-const mapStateToProps = ({ authedUser, questions, users }) => ({
-	loading: questions === {} || users === {},
-	authedUser,
+const mapStateToProps = ({ authedUser }) => ({
+	loading: authedUser === null,
 });
 
 export default connect(mapStateToProps)(App);
