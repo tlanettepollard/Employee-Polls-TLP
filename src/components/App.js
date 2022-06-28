@@ -19,7 +19,7 @@ const App = (props) => {
 			<LoadingBar />
 			<div className='App'>
 				<Container>
-					<Login />
+					<Login/>
 				</Container>
 			</div>
 		</Fragment>
