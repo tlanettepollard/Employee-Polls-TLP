@@ -7,7 +7,7 @@ import { removeAuthedUser } from '../actions/authedUser';
 import Avatar from './Avatar';
 
 const Navigation = (props) => {
-	const { user, dispatch } = props;
+	const { users, dispatch } = props;
 
 	const handleSignOut = () => {
 		dispatch(removeAuthedUser());
@@ -39,8 +39,8 @@ const Navigation = (props) => {
 						</Nav.Link>
 					</Nav>
 					<Nav className='align-items-start'>
-						<Navbar.Text>{user.name}</Navbar.Text>
-						<Avatar avatarURL={user.avatarURL} className='mx-3' />
+						<Navbar.Text>{users.name}</Navbar.Text>
+						<Avatar avatarURL={users.avatarURL} className='mx-3' />
 						<Button
 							variant='outline-dark'
 							onClick={handleSignOut}
@@ -56,7 +56,7 @@ const Navigation = (props) => {
 
 const mapStateToProps = ({ users, authedUser }) => {
 	return {
-		user: users[authedUser],
+		users: users[authedUser],
 	};
 };
 
