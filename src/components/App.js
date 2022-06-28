@@ -1,12 +1,17 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
 import { useEffect } from 'react';
 import { handleInitialData } from '../actions/shared';
 import { connect } from 'react-redux';
+//import { Route, Routes } from 'react-router-dom';
 import { LoadingBar } from 'react-redux-loading';
+//import Navigation from './Navigation';
 import Login from './Login';
+//import Home from './Home';
+//import PollPage from './PollPage';
+
+import Container from 'react-bootstrap/Container';
 import '../App.css';
-import { Container } from 'react-bootstrap';
+
 
 const App = (props) => {
 	useEffect(() => {
@@ -14,20 +19,17 @@ const App = (props) => {
 	}, [props, props.authedUser]);
 
 	return (
-		<Router>
-			<div className='app'>
+		<div className='App'>
+			<Container>
 				<LoadingBar />
-				<Container>
-					<Login />
-				</Container>
-			</div>
-		</Router>
+				<Login />
+			</Container>
+		</div>
 	);
 };
 
-const mapStateToProps = ({ authedUser, questions, users }) => ({
-	loading: questions === {} || users === {},
-	authedUser,
+const mapStateToProps = ({ authedUser }) => ({
+	loading: authedUser === null,
 });
 
 export default connect(mapStateToProps)(App);
