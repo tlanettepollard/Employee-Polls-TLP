@@ -1,17 +1,13 @@
 import React from 'react';
-import { useEffect } from 'react';
+import { useEffect, Fragment } from 'react';
 import { handleInitialData } from '../actions/shared';
 import { connect } from 'react-redux';
-//import { Route, Routes } from 'react-router-dom';
 import { LoadingBar } from 'react-redux-loading';
-//import Navigation from './Navigation';
 import Login from './Login';
-//import Home from './Home';
-//import PollPage from './PollPage';
+//import Navigation from './Navigation';
 
 import Container from 'react-bootstrap/Container';
 import '../App.css';
-
 
 const App = (props) => {
 	useEffect(() => {
@@ -19,12 +15,14 @@ const App = (props) => {
 	}, [props, props.authedUser]);
 
 	return (
-		<div className='App'>
-			<Container>
-				<LoadingBar />
-				<Login />
-			</Container>
-		</div>
+		<Fragment>
+			<LoadingBar />
+			<div className='App'>
+				<Container>
+					<Login />
+				</Container>
+			</div>
+		</Fragment>
 	);
 };
 
