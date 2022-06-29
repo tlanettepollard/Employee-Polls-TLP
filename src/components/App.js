@@ -3,8 +3,8 @@ import { useEffect, Fragment } from 'react';
 import { handleInitialData } from '../actions/shared';
 import { connect } from 'react-redux';
 import { LoadingBar } from 'react-redux-loading';
-//import Login from './Login';
-import Navigation from './Navigation';
+import Login from './Login';
+//import Navigation from './Navigation';
 //import PollPage from './PollPage';
 
 import Container from 'react-bootstrap/Container';
@@ -20,7 +20,7 @@ const App = (props) => {
 			<LoadingBar />
 			<div className='App'>
 				<Container>
-					<Navigation />
+					<Login />
 				</Container>
 			</div>
 		</Fragment>
