@@ -1,9 +1,9 @@
-import { saveQuestion } from '../utils/api';
-import { addUserQuestion } from './users';
+import { saveQuestion, saveQuestionAnswer } from '../utils/api';
+import { showLoading, hideLoading } from 'react-redux-loading';
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
-export const ADD_QUESTION_ANSWER = 'ADD_QUESTION_ANSWER';
-export const ADD_QUESTION = 'ADD_QUESTION';
+export const SAVE_QUESTION_ANSWER = 'SAVE_QUESTION_ANSWER';
+export const SAVE_QUESTION = 'SAVE_QUESTION';
 
 export function receiveQuestions(questions) {
 	return {
@@ -12,29 +12,48 @@ export function receiveQuestions(questions) {
 	};
 }
 
-export function addQuestionAnswer(authedUser, qid, answer) {
+export function saveAnswer({ authedUser, qid, answer }) {
 	return {
-		type: ADD_QUESTION_ANSWER,
+		type: SAVE_QUESTION_ANSWER,
 		authedUser,
 		qid,
 		answer,
 	};
 }
 
-export function addQuestion(question) {
+export function handleSaveAnswer(info) {
+	return (dispatch) => {
+		dispatch(showLoading());
+
+		return saveQuestionAnswer(info)
+			.then(() => dispatch(saveAnswer(info)))
+			.then(() => dispatch(hideLoading()));
+	};
+}
+
+function addQuestion(question) {
+	console.log(question);
 	return {
-		type: ADD_QUESTION,
+		type: SAVE_QUESTION,
 		question,
 	};
 }
 
-export function handleSaveQuestion(optionOneText, optionTwoText, author) {
-	return (dispatch) => {
-		return saveQuestion({ optionOneText, optionTwoText, author }).then(
-			(question) => {
-				dispatch(addQuestion(question));
-				dispatch(addUserQuestion(question));
-			}
-		);
+export function handleAddQuestion({ optionOneText, optionTwoText }) {
+	return (dispatch, getState) => {
+		const { authedUser } = getState();
+		dispatch(showLoading());
+
+		return saveQuestion({
+			optionOneText,
+			optionTwoText,
+			author: authedUser,
+		})
+			.then((question) => dispatch(addQuestion(question)))
+			.then(() => dispatch(hideLoading()))
+			.catch((e) => {
+				console.warn('Error in saveQuestion: ', e);
+				alert('There was an error in saving the question. Try again.');
+			});
 	};
 }

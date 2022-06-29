@@ -66,7 +66,7 @@ const Login = ({ users, dispatch }) => {
 											</option>
 										))}
 									</Form.Control>
-									{userSelected === 'none' ? (
+									{userSelected === '' ? (
 										<Button disabled className='login-btn'>
 											Sign In
 										</Button>
@@ -91,6 +91,6 @@ const mapStateToProps = ({ users }) => {
 			return users[key];
 		}),
 	};
-}
+};
 
 export default connect(mapStateToProps)(Login);
