@@ -1,16 +1,10 @@
 import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { useEffect, Fragment } from 'react';
 import { handleInitialData } from '../actions/shared';
 import { connect } from 'react-redux';
-import { LoadingBar } from 'react-redux-loading';
-import Login from './Login';
-//import PrivateApp from './PrivateApp';
-//import Navigation from './Navigation';
-//import PollPage from './PollPage';
-
-//import Container from 'react-bootstrap/Container';
+import { LoadingBar } from 'react-redux-loading-bar';
 import '../App.css';
-
 
 const App = (props) => {
 	useEffect(() => {
@@ -18,10 +12,14 @@ const App = (props) => {
 	}, [props, props.authedUser]);
 
 	return (
-		<Fragment>
-			<LoadingBar />
-			<Login /> 
-		</Fragment>
+		<Router>
+			<Fragment>
+				<LoadingBar />
+				<div className='App'>
+					<p>Home</p>
+				</div>
+			</Fragment>
+		</Router>
 	);
 };
 
