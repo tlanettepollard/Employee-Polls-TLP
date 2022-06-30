@@ -4,11 +4,13 @@ import { handleInitialData } from '../actions/shared';
 import { connect } from 'react-redux';
 import { LoadingBar } from 'react-redux-loading';
 import Login from './Login';
+//import PrivateApp from './PrivateApp';
 //import Navigation from './Navigation';
 //import PollPage from './PollPage';
 
-import Container from 'react-bootstrap/Container';
+//import Container from 'react-bootstrap/Container';
 import '../App.css';
+
 
 const App = (props) => {
 	useEffect(() => {
@@ -18,11 +20,7 @@ const App = (props) => {
 	return (
 		<Fragment>
 			<LoadingBar />
-			<div className='App'>
-				<Container>
-					<Login />
-				</Container>
-			</div>
+			<Login /> 
 		</Fragment>
 	);
 };
