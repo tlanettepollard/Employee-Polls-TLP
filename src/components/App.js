@@ -4,7 +4,10 @@ import { useEffect, Fragment } from 'react';
 import { handleInitialData } from '../actions/shared';
 import { connect } from 'react-redux';
 import { LoadingBar } from 'react-redux-loading-bar';
+import Login from './Login';
+import Navigation from './Navigation';
 import '../App.css';
+import authedUser from '../reducers/authedUser';
 
 const App = (props) => {
 	useEffect(() => {
@@ -17,6 +20,7 @@ const App = (props) => {
 				<LoadingBar />
 				<div className='App'>
 					<p>Home</p>
+					<Login />
 				</div>
 			</Fragment>
 		</Router>
