@@ -1,5 +1,4 @@
 import React from 'react';
-//import { BrowserRouter as Router } from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
 import { useEffect, Fragment } from 'react';
 import { handleInitialData } from '../actions/shared';
