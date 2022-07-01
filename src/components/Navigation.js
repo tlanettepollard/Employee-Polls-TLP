@@ -2,11 +2,12 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { Nav, Navbar } from 'react-bootstrap';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+//import Image from 'react-bootstrap/Image';
 import companyLogo from '../images/companyavatar.png';
-import Avatar from './Avatar';
+//import Avatar from './Avatar';
 import { handleLogoutAction } from '../actions/authedUser';
-import authedUser from '../reducers/authedUser';
 
 const withRouter = (Component) => {
 	const ComponentWithRouterProp = (props) => {
@@ -25,7 +26,7 @@ const Navigation = (props) => {
 		<Fragment>
 			<Navbar
 				collapseOnSelect
-				expand='lg'
+				expand='md'
 				bg='dark'
 				variant='dark'
 				className='justify-content-start'>
@@ -39,8 +40,10 @@ const Navigation = (props) => {
 					/>
 				</Navbar.Brand>
 				<Navbar.Toggle aria-controls='responsive-navbar-nav' />
-				<Navbar.Collapse id='responsive-navbar-nav'>
-					<Nav activeKey={location.home} className='me-auto'>
+				<Navbar.Collapse
+					id='responsive-navbar-nav'
+					className='justify-content-between'>
+					<Nav activeKey={location.home} className='mr-auto'>
 						<Nav.Link as={Link} to='/'>
 							Home
 						</Nav.Link>
@@ -55,7 +58,7 @@ const Navigation = (props) => {
 						<Nav.Link as={Link} to='#'>
 							{props.name}
 						</Nav.Link>
-						<Avatar avatarURL={authedUser.avatarURL} className='mx-3' />
+						{/* Need Avatar */}
 						<Nav.Link as={Link} to='#' onClick={props.onLogoutClick}>
 							Sign Out
 						</Nav.Link>
