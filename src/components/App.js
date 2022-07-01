@@ -10,6 +10,7 @@ import Home from './Home';
 //import UserCard from './UserCard';
 //import Leaderboard from './Leaderboard';
 import '../App.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 //import authedUser from '../reducers/authedUser';
 
 const App = (props) => {

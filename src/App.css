@@ -36,6 +36,24 @@ li {
 	text-indent: 0;
 }
 
+.app-logo {
+	height: auto;
+	margin: 20px auto;
+	padding: 20px;
+}
+.avatar {
+	margin: auto;
+}
+
+.avatar-img {
+	width: 20%;
+	height: auto;
+	margin: auto;
+	padding: 5px;
+}
+
+
+/*
 header {
 	width: 100%;
 	border-bottom: 3px solid #1b2430;
@@ -105,9 +123,7 @@ form {
 	font-size: 1em;
 }
 
-.avatar {
-	margin: auto;
-}
+
 
 .app,
 .app-heading,
@@ -127,23 +143,12 @@ form {
 	font-weight: 400;
 }
 
-.app-logo {
-	width: 60%;
-	height: auto;
-	margin: 20px auto;
-	padding: 20px;
-}
 
-.avatar-img {
-	width: 20%;
-	height: auto;
-	margin: auto;
-	padding: 5px;
-}
-
+*/
 /***** Nav ******/
 
 /***** Form *****/
+/*
 .form-title {
 	margin: 15px auto;
 	padding: 1.25rem;
@@ -151,7 +156,7 @@ form {
 
 .login-form {
 	width: 80%;
-	margin: 1.875rem;
+	//margin: 1.875rem;
 	padding: 1.25rem;
 }
 
@@ -174,5 +179,5 @@ form {
 	font-size: 1.25rem;
 	font-weight: 700;
 }
-
+*/
 /***** Dashboard *****/

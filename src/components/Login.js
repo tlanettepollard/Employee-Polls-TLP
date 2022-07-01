@@ -1,14 +1,12 @@
 import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
-import {
-	Card,
-	Container,
-	Form,
-	Button,
-	Row,
-	Col,
-	Image,
-} from 'react-bootstrap';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+import Image from 'react-bootstrap/Image';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
 import { LoadingBar } from 'react-redux-loading-bar';
 import companyLogo from '../images/companyavatar.png';
 import { setAuthedUser } from '../actions/authedUser';
@@ -23,27 +21,23 @@ const Login = ({ users, dispatch }) => {
 
 	return (
 		<Fragment>
-			<Container>
+			<Container fluid>
 				<LoadingBar />
-				<Row className='justify-content-center align-items-center min-vh-100'>
-					<Col xs={12} md={4}>
-						<Container>
-							<h1 className='text-center app-heading'>
-								Welcome to Employee Polls!
-							</h1>
-							<h3 className='text-center app-subheading'>
-								Please sign in to continue.
-							</h3>
-							<Image
-								src={companyLogo}
-								alt='company logo'
-								className='fluid app-logo'
-							/>
-						</Container>
-					</Col>
-				</Row>
-				<Row className='justify-content-center align-items-center min-vh-100'>
-					<Col xs={12} md={4}>
+				<Row className='justify-contents-center align-items-center m-auto pt-4'>
+					<Col xs={12} md={4} lg={6} className='m-auto'>
+						<h1 className='text-center app-heading'>
+							Welcome to Employee Polls!
+						</h1>
+						<h3 className='text-center app-subheading'>
+							Please sign in to continue.
+						</h3>
+						<Image
+							src={companyLogo}
+							alt='company logo'
+							className='w-80 p-5'
+							fluid
+						/>
+
 						<Card className='bg-light text-center'>
 							<Card.Body>
 								<Form className='Form'>
@@ -51,7 +45,7 @@ const Login = ({ users, dispatch }) => {
 										<Form.Control
 											as='select'
 											aria-label='Select a User'
-											className='login-form'
+											className='p-2'
 											onChange={(e) => setUserSelected(e.target.value)}
 											value={userSelected}>
 											<option value='none' disabled className='user-dropdown'>
@@ -64,11 +58,11 @@ const Login = ({ users, dispatch }) => {
 											))}
 										</Form.Control>
 										{userSelected === 'none' ? (
-											<Button disabled className='login-btn'>
+											<Button disabled className='w-100 mt-3'>
 												Sign In
 											</Button>
 										) : (
-											<Button onClick={handleLogin} className='login-btn'>
+											<Button onClick={handleLogin} className='w-100'>
 												Sign In
 											</Button>
 										)}

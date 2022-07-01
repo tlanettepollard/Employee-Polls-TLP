@@ -2,11 +2,12 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { Nav, Navbar } from 'react-bootstrap';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+//import Image from 'react-bootstrap/Image';
 import companyLogo from '../images/companyavatar.png';
-import Avatar from './Avatar';
+//import Avatar from './Avatar';
 import { handleLogoutAction } from '../actions/authedUser';
-import authedUser from '../reducers/authedUser';
 
 const withRouter = (Component) => {
 	const ComponentWithRouterProp = (props) => {
@@ -25,11 +26,11 @@ const Navigation = (props) => {
 		<Fragment>
 			<Navbar
 				collapseOnSelect
-				expand='lg'
-				bg='dark'
-				variant='dark'
-				className='justify-content-start'>
-				<Navbar.Brand as={Link} to='/'>
+				expand='md'
+				bg='light'
+				variant='light'
+				className='p-3'>
+				<Navbar.Brand as={Link} to='/' className='p-3'>
 					<img
 						src={companyLogo}
 						width='30'
@@ -39,23 +40,31 @@ const Navigation = (props) => {
 					/>
 				</Navbar.Brand>
 				<Navbar.Toggle aria-controls='responsive-navbar-nav' />
-				<Navbar.Collapse id='responsive-navbar-nav'>
-					<Nav activeKey={location.home} className='me-auto'>
-						<Nav.Link as={Link} to='/'>
-							Home
-						</Nav.Link>
-						<Nav.Link as={Link} to='/leaderboard'>
-							Leaderboard
-						</Nav.Link>
-						<Nav.Link as={Link} to='/new'>
-							New
-						</Nav.Link>
+				<Navbar.Collapse
+					id='responsive-navbar-nav'
+					className='justify-content-between'>
+					<Nav className='me-auto' activeKey={location.home} variant='pills'>
+						<Nav.Item as='li'>
+							<Nav.Link as={Link} to='/'>
+								Home
+							</Nav.Link>
+						</Nav.Item>
+						<Nav.Item>
+							<Nav.Link as={Link} to='/leaderboard'>
+								Leaderboard
+							</Nav.Link>
+						</Nav.Item>
+						<Nav.Item>
+							<Nav.Link as={Link} to='/new'>
+								New
+							</Nav.Link>
+						</Nav.Item>
 					</Nav>
 					<Nav className='justify-content-end'>
 						<Nav.Link as={Link} to='#'>
 							{props.name}
 						</Nav.Link>
-						<Avatar avatarURL={authedUser.avatarURL} className='mx-3' />
+						{/* Need Avatar */}
 						<Nav.Link as={Link} to='#' onClick={props.onLogoutClick}>
 							Sign Out
 						</Nav.Link>
