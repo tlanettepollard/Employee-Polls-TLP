@@ -19,3 +19,12 @@ export function handleLogoutAction() {
 		dispatch(removeAuthedUser());
 	};
 }
+
+export function handleLoginAction(username) {
+	return (dispatch, getState) => {
+		const { users } = getState();
+		if (users[username] != null) {
+			dispatch(setAuthedUser(username));
+		}
+	};
+}
