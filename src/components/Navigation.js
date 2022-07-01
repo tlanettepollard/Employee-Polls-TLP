@@ -1,21 +1,34 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Link, NavLink } from 'react-router-dom';
-import { Nav, Navbar, Button } from 'react-bootstrap';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { Nav, Navbar } from 'react-bootstrap';
 import companyLogo from '../images/companyavatar.png';
-import { removeAuthedUser } from '../actions/authedUser';
 import Avatar from './Avatar';
+import { handleLogoutAction } from '../actions/authedUser';
+import authedUser from '../reducers/authedUser';
+
+const withRouter = (Component) => {
+	const ComponentWithRouterProp = (props) => {
+		let location = useLocation();
+		let navigate = useNavigate();
+		let params = useParams();
+		return <Component {...props} router={{ location, navigate, params }} />;
+	};
+	return ComponentWithRouterProp;
+};
 
 const Navigation = (props) => {
-	const { users, dispatch } = props;
-
-	const handleSignOut = () => {
-		dispatch(removeAuthedUser());
-	};
+	const { location } = props.router;
 
 	return (
 		<Fragment>
-			<Navbar collapseOnSelect expand='md' bg='light'>
+			<Navbar
+				collapseOnSelect
+				expand='lg'
+				bg='dark'
+				variant='dark'
+				className='justify-content-start'>
 				<Navbar.Brand as={Link} to='/'>
 					<img
 						src={companyLogo}
@@ -27,26 +40,25 @@ const Navigation = (props) => {
 				</Navbar.Brand>
 				<Navbar.Toggle aria-controls='responsive-navbar-nav' />
 				<Navbar.Collapse id='responsive-navbar-nav'>
-					<Nav className='me-auto'>
-						<Nav.Link as={NavLink} to='/' exact>
+					<Nav activeKey={location.home} className='me-auto'>
+						<Nav.Link as={Link} to='/'>
 							Home
 						</Nav.Link>
-						<Nav.Link as={NavLink} to='/add'>
-							New Question
-						</Nav.Link>
-						<Nav.Link as={NavLink} to='/leaderboard'>
+						<Nav.Link as={Link} to='/leaderboard'>
 							Leaderboard
 						</Nav.Link>
+						<Nav.Link as={Link} to='/new'>
+							New
+						</Nav.Link>
 					</Nav>
-					<Nav className='align-items-start'>
-						<Navbar.Text>{users.name}</Navbar.Text>
-						<Avatar avatarURL={users.avatarURL} className='mx-3' />
-						<Button
-							variant='outline-dark'
-							onClick={handleSignOut}
-							className='mt-3 mt-lg-0'>
+					<Nav className='justify-content-end'>
+						<Nav.Link as={Link} to='#'>
+							{props.name}
+						</Nav.Link>
+						<Avatar avatarURL={authedUser.avatarURL} className='mx-3' />
+						<Nav.Link as={Link} to='#' onClick={props.onLogoutClick}>
 							Sign Out
-						</Button>
+						</Nav.Link>
 					</Nav>
 				</Navbar.Collapse>
 			</Navbar>
@@ -54,10 +66,20 @@ const Navigation = (props) => {
 	);
 };
 
-const mapStateToProps = ({ users, authedUser }) => {
+const mapStateToProps = ({ authedUser, users }) => {
 	return {
-		users: users[authedUser],
+		name: users[authedUser].name,
 	};
 };
 
-export default connect(mapStateToProps)(Navigation);
+const mapDispatchToProps = (dispatch) => {
+	return {
+		onLogoutClick: () => {
+			dispatch(handleLogoutAction());
+		},
+	};
+};
+
+export default withRouter(
+	connect(mapStateToProps, mapDispatchToProps)(Navigation)
+);
