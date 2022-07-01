@@ -27,10 +27,10 @@ const Navigation = (props) => {
 			<Navbar
 				collapseOnSelect
 				expand='md'
-				bg='dark'
-				variant='dark'
-				className='justify-content-start'>
-				<Navbar.Brand as={Link} to='/'>
+				bg='light'
+				variant='light'
+				className='p-3'>
+				<Navbar.Brand as={Link} to='/' className='p-3'>
 					<img
 						src={companyLogo}
 						width='30'
@@ -43,16 +43,22 @@ const Navigation = (props) => {
 				<Navbar.Collapse
 					id='responsive-navbar-nav'
 					className='justify-content-between'>
-					<Nav activeKey={location.home} className='mr-auto'>
-						<Nav.Link as={Link} to='/'>
-							Home
-						</Nav.Link>
-						<Nav.Link as={Link} to='/leaderboard'>
-							Leaderboard
-						</Nav.Link>
-						<Nav.Link as={Link} to='/new'>
-							New
-						</Nav.Link>
+					<Nav className='me-auto' activeKey={location.home} variant='pills'>
+						<Nav.Item as='li'>
+							<Nav.Link as={Link} to='/'>
+								Home
+							</Nav.Link>
+						</Nav.Item>
+						<Nav.Item>
+							<Nav.Link as={Link} to='/leaderboard'>
+								Leaderboard
+							</Nav.Link>
+						</Nav.Item>
+						<Nav.Item>
+							<Nav.Link as={Link} to='/new'>
+								New
+							</Nav.Link>
+						</Nav.Item>
 					</Nav>
 					<Nav className='justify-content-end'>
 						<Nav.Link as={Link} to='#'>

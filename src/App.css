@@ -37,7 +37,6 @@ li {
 }
 
 .app-logo {
-	
 	height: auto;
 	margin: 20px auto;
 	padding: 20px;
@@ -52,6 +51,8 @@ li {
 	margin: auto;
 	padding: 5px;
 }
+
+
 /*
 header {
 	width: 100%;
