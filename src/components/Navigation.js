@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { Nav, Navbar, Container } from 'react-bootstrap';
+import { Nav, Navbar } from 'react-bootstrap';
 import companyLogo from '../images/companyavatar.png';
 import Avatar from './Avatar';
 import { handleLogoutAction } from '../actions/authedUser';
@@ -23,41 +23,44 @@ const Navigation = (props) => {
 
 	return (
 		<Fragment>
-			<Navbar collapseOnSelect expand='md' bg='light' variant='dark'>
-				<Container>
-					<Navbar.Brand as={Link} to='/'>
-						<img
-							src={companyLogo}
-							width='30'
-							height='30'
-							className='d-inline-block align-top'
-							alt='company logo'
-						/>
-					</Navbar.Brand>
-					<Navbar.Toggle aria-controls='responsive-navbar-nav' />
-					<Navbar.Collapse id='responsive-navbar-nav'>
-						<Nav activeKey={location.pathname} className='me-auto'>
-							<Nav.Link as={Link} to='/'>
-								Home
-							</Nav.Link>
-							<Nav.Link as={Link} to='/leaderboard'>
-								Leaderboard
-							</Nav.Link>
-							<Nav.Link as={Link} to='/new'>
-								New
-							</Nav.Link>
-						</Nav>
-						<Nav>
-							<Nav.Link as={Link} to='#'>
-								{props.name}
-							</Nav.Link>
-							<Avatar avatarURL={authedUser.avatarURL} className='mx-3' />
-							<Nav.Link as={Link} to='#' onClick={props.onLogoutClick}>
-								Sign Out
-							</Nav.Link>
-						</Nav>
-					</Navbar.Collapse>
-				</Container>
+			<Navbar
+				collapseOnSelect
+				expand='lg'
+				bg='dark'
+				variant='dark'
+				className='justify-content-start'>
+				<Navbar.Brand as={Link} to='/'>
+					<img
+						src={companyLogo}
+						width='30'
+						height='30'
+						className='d-inline-block align-top'
+						alt='company logo'
+					/>
+				</Navbar.Brand>
+				<Navbar.Toggle aria-controls='responsive-navbar-nav' />
+				<Navbar.Collapse id='responsive-navbar-nav'>
+					<Nav activeKey={location.home} className='me-auto'>
+						<Nav.Link as={Link} to='/'>
+							Home
+						</Nav.Link>
+						<Nav.Link as={Link} to='/leaderboard'>
+							Leaderboard
+						</Nav.Link>
+						<Nav.Link as={Link} to='/new'>
+							New
+						</Nav.Link>
+					</Nav>
+					<Nav className='justify-content-end'>
+						<Nav.Link as={Link} to='#'>
+							{props.name}
+						</Nav.Link>
+						<Avatar avatarURL={authedUser.avatarURL} className='mx-3' />
+						<Nav.Link as={Link} to='#' onClick={props.onLogoutClick}>
+							Sign Out
+						</Nav.Link>
+					</Nav>
+				</Navbar.Collapse>
 			</Navbar>
 		</Fragment>
 	);
