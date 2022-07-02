@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
+import UserCard from './UserCard';
 //import Row from 'react-bootstrap/Row';
 //import Col from 'react-bootstrap/Col';
 //import Container from 'react-bootstrap/Container';
@@ -12,11 +13,12 @@ const Home = (props) => {
 		<Fragment>
 			<Tabs>
 				<Tab eventKey='unanswered' title='Unanswered Questions'>
-					Unanswered
+					<UserCard />
+					
 				</Tab>
 
 				<Tab eventKey='answered' title='Answered Questions'>
-					Answered
+					<UserCard />
 				</Tab>
 			</Tabs>
 		</Fragment>
