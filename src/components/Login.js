@@ -9,14 +9,14 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import { LoadingBar } from 'react-redux-loading-bar';
 import companyLogo from '../images/companyavatar.png';
-import { setAuthedUser } from '../actions/authedUser';
+import { handleLoginAction } from '../actions/authedUser';
 
 const Login = ({ users, dispatch }) => {
 	const [userSelected, setUserSelected] = useState('none');
 
 	const handleLogin = (e) => {
 		e.preventDefault();
-		dispatch(setAuthedUser(userSelected));
+		dispatch(handleLoginAction(userSelected));
 	};
 
 	return (
