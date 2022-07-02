@@ -7,11 +7,11 @@ import { LoadingBar } from 'react-redux-loading-bar';
 import Login from './Login';
 import Navigation from './Navigation';
 import Home from './Home';
-//import UserCard from './UserCard';
+import NewPoll from './NewPoll';
+import QuestionPage from './QuestionPage';
 //import Leaderboard from './Leaderboard';
 import '../App.css';
-//import 'bootstrap/dist/css/bootstrap.min.css';
-//import authedUser from '../reducers/authedUser';
+
 
 const App = (props) => {
 	useEffect(() => {
@@ -29,16 +29,18 @@ const App = (props) => {
 				<LoadingBar />
 				<Routes>
 					<Route path='/' exact element={<Home />} />
+					<Route path='/questions/:id' element={<QuestionPage/>}/>
+					<Route path='/new' element={<NewPoll />} />
 				</Routes>
 			</div>
 		</Fragment>
 	);
 };
 
-const mapStateToProps = ( state ) => {
+const mapStateToProps = (state) => {
 	return {
 		authedUser: state.authedUser,
-	}
+	};
 };
 
 export default connect(mapStateToProps)(App);
