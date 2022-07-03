@@ -9,9 +9,8 @@ import Navigation from './Navigation';
 import Home from './Home';
 import NewPoll from './NewPoll';
 import QuestionPage from './QuestionPage';
-//import Leaderboard from './Leaderboard';
+import Leaderboard from './Leaderboard';
 import '../App.css';
-
 
 const App = (props) => {
 	useEffect(() => {
@@ -29,8 +28,9 @@ const App = (props) => {
 				<LoadingBar />
 				<Routes>
 					<Route path='/' exact element={<Home />} />
-					<Route path='/questions/:id' element={<QuestionPage/>}/>
+					<Route path='/questions/:id' element={<QuestionPage />} />
 					<Route path='/new' element={<NewPoll />} />
+					<Route path='/leaderboard' element={<Leaderboard />} />
 				</Routes>
 			</div>
 		</Fragment>
