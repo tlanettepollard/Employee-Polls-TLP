@@ -1,12 +1,9 @@
+import { saveQuestionAnswer, saveQuestion } from '../utils/api';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
-import { getInitialData } from '../utils/api';
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
-export const GROUP_QUESITONS = 'GROUP_QUESTIONS';
-export const VOTE_QUESTION = 'VOTE_QUESTION';
-
-export const OPTION_ONE = 'optionOne';
-export const OPTION_TWO = 'optionTwo';
+export const ADD_QUESTION = 'ADD_QUESTION';
+export const ADD_ANSWER = 'ADD_ANSWER';
 
 export function receiveQuestions(questions) {
 	return {
@@ -15,29 +12,56 @@ export function receiveQuestions(questions) {
 	};
 }
 
-export function groupQuestions(username) {
+function addAnswer(authedUser, qid, answer) {
 	return {
-		type: GROUP_QUESITONS,
-		username: username,
+		type: ADD_ANSWER,
+		authedUser,
+		qid,
+		answer,
 	};
 }
 
-export function answerQuestion(username, questionId, answer) {
+function addQuestion(question) {
 	return {
-		type: VOTE_QUESTION,
-		username: username,
-		questionId: questionId,
-		answer: answer,
+		type: ADD_QUESTION,
+		question,
 	};
 }
 
-export function handleSaveAnswer(username, questionId, answer) {
+export function handleAddAnswer(qid, answer) {
 	return (dispatch, getState) => {
+		const { authedUser } = getState();
+
 		dispatch(showLoading());
-		return getInitialData().then(() => {
-			dispatch(answerQuestion(username, questionId, answer));
-			dispatch(groupQuestions(username));
-			dispatch(hideLoading());
-		});
+		return saveQuestionAnswer({
+			qid,
+			answer,
+			authedUser,
+		})
+			.then(() =>
+				dispatch(
+					addAnswer({
+						qid,
+						answer,
+						authedUser,
+					})
+				)
+			)
+			.then(() => dispatch(hideLoading()));
+	};
+}
+
+export function handleAddQuestion(optionOne, optionTwo) {
+	return (dispatch, getState) => {
+		const { authedUser } = getState();
+		dispatch(showLoading());
+
+		return saveQuestion({
+			optionOneText: optionOne,
+			optionTwoText: optionTwo,
+			author: authedUser,
+		})
+			.then((question) => dispatch(addQuestion(question)))
+			.then(() => dispatch(hideLoading()));
 	};
 }

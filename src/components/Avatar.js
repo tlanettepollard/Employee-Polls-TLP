@@ -1,16 +1,16 @@
 import React from 'react';
 import Image from 'react-bootstrap/Image';
 
-const Avatar = (props) => {
+const Avatar = (users) => {
 	return (
 		<Image
-			src={props.avatarUrl}
+			src={users.avatarUrl}
 			roundedCircle
 			fluid
 			width='40'
 			height='40'
 			alt='user avatar'
-			className={props.className}
+			className="rounded-circle"
 		/>
 	);
 };
