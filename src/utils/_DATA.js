@@ -3,7 +3,7 @@ let users = {
 		id: 'sarahedo',
 		password: 'password123',
 		name: 'Sarah Edo',
-		avatarURL: 'src/images/AvatarSarah.png',
+		avatarURL: '/images/AvatarSarah.png',
 		answers: {
 			'8xf0y6ziyjabvozdd253nd': 'optionOne',
 			'6ni6ok3ym7mf1p33lnez': 'optionOne',
@@ -16,7 +16,7 @@ let users = {
 		id: 'tylermcginnis',
 		password: 'abc321',
 		name: 'Tyler McGinnis',
-		avatarURL: 'src/images/AvatarTyler.png',
+		avatarURL: '/images/AvatarTyler.png',
 		answers: {
 			vthrdm985a262al8qx3do: 'optionOne',
 			xj352vofupe1dqz9emx13r: 'optionTwo',
@@ -27,7 +27,7 @@ let users = {
 		id: 'mtsamis',
 		password: 'xyz123',
 		name: 'Mike Tsamis',
-		avatarURL: 'src/images/AvatarMike.png',
+		avatarURL: '/images/AvatarMike.png',
 		answers: {
 			xj352vofupe1dqz9emx13r: 'optionOne',
 			vthrdm985a262al8qx3do: 'optionTwo',
@@ -39,7 +39,7 @@ let users = {
 		id: 'zoshikanlu',
 		password: 'pass246',
 		name: 'Zenobia Oshikanlu',
-		avatarURL: 'src/images/AvatarZenobia.png',
+		avatarURL: '/images/AvatarZenobia.png',
 		answers: {
 			xj352vofupe1dqz9emx13r: 'optionOne',
 		},
@@ -80,11 +80,11 @@ let questions = {
 		timestamp: 1488579767190,
 		optionOne: {
 			votes: [],
-			text: 'conduct a release retrospective 1 week after a release',
+			text: 'Conduct a release retrospective 1 week after a release',
 		},
 		optionTwo: {
 			votes: ['sarahedo'],
-			text: 'conduct release retrospectives quarterly',
+			text: 'Conduct release retrospectives quarterly',
 		},
 	},
 	loxhs1bqm25b708cmbf3g: {
@@ -93,11 +93,11 @@ let questions = {
 		timestamp: 1482579767190,
 		optionOne: {
 			votes: [],
-			text: 'have code reviews conducted by peers',
+			text: 'Have code reviews conducted by peers',
 		},
 		optionTwo: {
 			votes: ['sarahedo'],
-			text: 'have code reviews conducted by managers',
+			text: 'Have code reviews conducted by managers',
 		},
 	},
 	vthrdm985a262al8qx3do: {
