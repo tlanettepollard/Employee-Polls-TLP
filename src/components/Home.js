@@ -6,9 +6,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import UserCard from './UserCard';
-//import Row from 'react-bootstrap/Row';
-//import Col from 'react-bootstrap/Col';
-//import Container from 'react-bootstrap/Container';
+
 //import PollQuestion from './PollQuestion';
 
 const Home = (props) => {
@@ -16,31 +14,23 @@ const Home = (props) => {
 		<Fragment>
 			<Tabs>
 				<Tab eventKey='unanswered' title='Unanswered Questions'>
-					{props.newQuestions.length > 0 && (
-						<Container>
-							<Row xs={1} md={3} className='g-3 mt-2'>
-								{props.newQuestions.map((id) => (
-									<Col key={id}>
-										<UserCard />
-									</Col>
-								))}
-							</Row>
-						</Container>
-					)}
+					<Container>
+						<Row xs={1} md={3} className='g-3 mt-2'>
+							<Col>
+								<UserCard />
+							</Col>
+						</Row>
+					</Container>
 				</Tab>
 
 				<Tab eventKey='answered' title='Answered Questions'>
-					{props.answeredQuestions.length > 0 && (
-						<Container>
-							<Row xs={1} md={3} className='g-3 mt-2'>
-								{props.answeredQuestions.map((id) => (
-									<Col key={id}>
-										<UserCard />
-									</Col>
-								))}
-							</Row>
-						</Container>
-					)}
+					<Container>
+						<Row xs={1} md={3} className='g-3 mt-2'>
+							<Col>
+								<UserCard />
+							</Col>
+						</Row>
+					</Container>
 				</Tab>
 			</Tabs>
 		</Fragment>

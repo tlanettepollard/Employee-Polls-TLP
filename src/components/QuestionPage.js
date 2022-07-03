@@ -6,7 +6,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
-import { handleSaveAnswer, OPTION_ONE, OPTION_TWO } from '../actions/questions';
+//import { handleSaveAnswer } from '../actions/questions';
 
 const withRouter = (Component) => {
 	const ComponentWithRouterProp = (props) => {
@@ -19,15 +19,7 @@ const withRouter = (Component) => {
 };
 
 const QuestionPage = (props) => {
-	const navigate = useNavigate();
-
-	const handleVote = (e, answer) => {
-		e.preventDefault();
-		props.dispatch(
-			handleSaveAnswer(props.authedUser, props.question.id, answer)
-		);
-		navigate('/');
-	};
+	
 
 	return (
 		<Container>
@@ -47,10 +39,9 @@ const QuestionPage = (props) => {
 							<Card className='text-center' border='primary'>
 								<Card.Header>Option One</Card.Header>
 								<Card.Body>
-									<Card.Text>{props.question.optionOne.text}</Card.Text>
+									<Card.Text>Option 1 Question</Card.Text>
 									<Button
 										variant='primary'
-										onClick={(e) => handleVote(e, OPTION_ONE)}
 										disabled={props.isAnswered}>
 										Vote
 									</Button>
@@ -61,10 +52,9 @@ const QuestionPage = (props) => {
 							<Card className='text-center' border='primary'>
 								<Card.Header>Option Two</Card.Header>
 								<Card.Body>
-									<Card.Text>{props.question.optionTwo.text}</Card.Text>
+									<Card.Text>Option Two Question</Card.Text>
 									<Button
 										variant='primary'
-										onClick={(e) => handleVote(e, OPTION_TWO)}
 										disabled={props.isAnswered}>
 										Vote
 									</Button>
