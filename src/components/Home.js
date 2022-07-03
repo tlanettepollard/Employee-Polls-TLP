@@ -5,11 +5,13 @@ import Tab from 'react-bootstrap/Tab';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
-import UserCard from './UserCard';
+import QuestionPage from './QuestionPage';
 
 //import PollQuestion from './PollQuestion';
 
 const Home = (props) => {
+	const { answeredQuestionsIds, unansweredQuestionIds } = props;
+
 	return (
 		<Fragment>
 			<Tabs>
@@ -17,7 +19,10 @@ const Home = (props) => {
 					<Container>
 						<Row xs={1} md={3} className='g-3 mt-2'>
 							<Col>
-								<UserCard />
+								<QuestionPage
+									idsList={unansweredQuestionIds}
+									listNote='No more Unanswered Questions. Now you can create new ones!'
+								/>
 							</Col>
 						</Row>
 					</Container>
@@ -27,7 +32,10 @@ const Home = (props) => {
 					<Container>
 						<Row xs={1} md={3} className='g-3 mt-2'>
 							<Col>
-								<UserCard />
+								<QuestionPage
+									idsList={answeredQuestionsIds}
+									listNote='No Answered Questions yet! Time for you to get started!'
+								/>
 							</Col>
 						</Row>
 					</Container>
@@ -37,10 +45,18 @@ const Home = (props) => {
 	);
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ authedUser, questions, users }) => {
+	const answeredQuestionsIds = Object.keys(questions)
+		.filter((id) => users[authedUser].answers.hasOwnProperty(id))
+		.sort((a, b) => questions[b].timestamp - questions[a].timestamp);
+
+	const unansweredQuestionIds = Object.keys(questions)
+		.filter((id) => !users[authedUser].answers.hasOwnProperty(id))
+		.sort((a, b) => questions[b].timestamp - questions[a].timestamp);
+
 	return {
-		newQuestions: state.questions.nonAnswered,
-		answeredQuestions: state.questions.answered,
+		answeredQuestionsIds,
+		unansweredQuestionIds,
 	};
 };
 
