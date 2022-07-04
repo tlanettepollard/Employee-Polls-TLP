@@ -5,8 +5,9 @@ import { Link } from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 //import Image from 'react-bootstrap/Image';
-import companyLogo from '../images/companyavatar.png';
+import companyLogo from '../assets/companyavatar.png';
 //import Avatar from './Avatar';
+//import { setAuthedUser } from '../actions/authedUser';
 import { handleLogoutAction } from '../actions/authedUser';
 
 const withRouter = (Component) => {
@@ -20,6 +21,13 @@ const withRouter = (Component) => {
 };
 
 const Navigation = (props) => {
+	/*const [authedUser, setAuthedUser] = useState(props.authedUser);
+	let users = props.users;
+
+	useEffect(() => {
+		setAuthedUser(props.authedUser);
+	}, [props.authedUser]);*/
+
 	const { location } = props.router;
 
 	return (
@@ -64,6 +72,7 @@ const Navigation = (props) => {
 						<Nav.Link as={Link} to='#'>
 							{props.name}
 						</Nav.Link>
+
 						{/* Need Avatar */}
 						<Nav.Link as={Link} to='#' onClick={props.onLogoutClick}>
 							Sign Out
@@ -84,6 +93,7 @@ const mapStateToProps = ({ authedUser, users }) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		onLogoutClick: () => {
+			//setAuthedUser('');
 			dispatch(handleLogoutAction());
 		},
 	};

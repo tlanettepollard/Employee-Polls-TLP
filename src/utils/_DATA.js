@@ -3,7 +3,7 @@ let users = {
 		id: 'sarahedo',
 		password: 'password123',
 		name: 'Sarah Edo',
-		avatarURL: '/images/AvatarSarah.png',
+		avatarURL: '../assets/companyavatar.png',
 		answers: {
 			'8xf0y6ziyjabvozdd253nd': 'optionOne',
 			'6ni6ok3ym7mf1p33lnez': 'optionOne',
@@ -16,7 +16,7 @@ let users = {
 		id: 'tylermcginnis',
 		password: 'abc321',
 		name: 'Tyler McGinnis',
-		avatarURL: '/images/AvatarTyler.png',
+		avatarURL: '../assets/AvatarTyler.png',
 		answers: {
 			vthrdm985a262al8qx3do: 'optionOne',
 			xj352vofupe1dqz9emx13r: 'optionTwo',
@@ -27,7 +27,7 @@ let users = {
 		id: 'mtsamis',
 		password: 'xyz123',
 		name: 'Mike Tsamis',
-		avatarURL: '/images/AvatarMike.png',
+		avatarURL: '../assets/AvatarMike.png',
 		answers: {
 			xj352vofupe1dqz9emx13r: 'optionOne',
 			vthrdm985a262al8qx3do: 'optionTwo',
@@ -39,7 +39,7 @@ let users = {
 		id: 'zoshikanlu',
 		password: 'pass246',
 		name: 'Zenobia Oshikanlu',
-		avatarURL: '/images/AvatarZenobia.png',
+		avatarURL: '../assets/AvatarZenobia.png',
 		answers: {
 			xj352vofupe1dqz9emx13r: 'optionOne',
 		},
@@ -67,11 +67,11 @@ let questions = {
 		timestamp: 1468479767190,
 		optionOne: {
 			votes: [],
-			text: 'hire more frontend developers',
+			text: 'Hire more frontend developers',
 		},
 		optionTwo: {
 			votes: ['mtsamis', 'sarahedo'],
-			text: 'hire more backend developers',
+			text: 'Hire more backend developers',
 		},
 	},
 	am8ehyc8byjqgar0jgpub9: {
@@ -106,11 +106,11 @@ let questions = {
 		timestamp: 1489579767190,
 		optionOne: {
 			votes: ['tylermcginnis'],
-			text: 'take a course on ReactJS',
+			text: 'Take a course on ReactJS',
 		},
 		optionTwo: {
 			votes: ['mtsamis'],
-			text: 'take a course on unit testing with Jest',
+			text: 'Take a course on unit testing with Jest',
 		},
 	},
 	xj352vofupe1dqz9emx13r: {
@@ -119,11 +119,11 @@ let questions = {
 		timestamp: 1493579767190,
 		optionOne: {
 			votes: ['mtsamis', 'zoshikanlu'],
-			text: 'deploy to production once every two weeks',
+			text: 'Deploy to production once every two weeks',
 		},
 		optionTwo: {
 			votes: ['tylermcginnis'],
-			text: 'deploy to production once every month',
+			text: 'Deploy to production once every month',
 		},
 	},
 };
