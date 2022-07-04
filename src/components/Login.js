@@ -8,7 +8,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import { LoadingBar } from 'react-redux-loading-bar';
-import companyLogo from '../images/companyavatar.png';
+import companyLogo from '../assets/companyavatar.png';
 import { handleLoginAction } from '../actions/authedUser';
 
 const Login = ({ users, dispatch }) => {
