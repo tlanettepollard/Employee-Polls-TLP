@@ -28,7 +28,7 @@ const App = (props) => {
 				<LoadingBar />
 				<Routes>
 					<Route path='/' exact element={<Home />} />
-					<Route path='/questions/:id' element={<QuestionPage />} />
+					<Route path='/questions/:qid' element={<QuestionPage />} />
 					<Route path='/new' element={<NewPoll />} />
 					<Route path='/leaderboard' element={<Leaderboard />} />
 				</Routes>
