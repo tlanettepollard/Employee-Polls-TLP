@@ -1,9 +1,13 @@
-import { saveQuestionAnswer } from '../utils/api';
+import { getInitialData, saveQuestionAnswer } from '../utils/api';
 import { addAnswerToQuestion } from './questions';
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
 
 export const RECEIVE_USERS = 'RECEIVE_USERS';
 export const ADD_QUESTION_TO_USER = 'ADD_QUESTION_TO_USER';
 export const ADD_ANSWER_TO_USER = 'ADD_ANSWER_TO_USER';
+
+export const OPTION_ONE = 'optionOne';
+export const OPTION_TWO = 'optionTwo';
 
 export function receiveUsers(users) {
 	return {
@@ -29,13 +33,17 @@ export function addAnswerToUser({ authedUser, qid, answer }) {
 	};
 }
 
-export function handleSaveQuestionAnswer(authedUser, qid, answer) {
+export function handleSaveQuestionAnswer(username, questionId, answer) {
 	return (dispatch) => {
-		dispatch(addAnswerToUser(authedUser, qid, answer));
-		dispatch(addAnswerToQuestion(authedUser, qid, answer));
+		dispatch(showLoading());
+		return getInitialData().then(() => {
+			dispatch(addAnswerToUser(username, questionId, answer));
+			dispatch(addAnswerToQuestion(username, questionId, answer));
+			dispatch(hideLoading());
 
-		return saveQuestionAnswer(authedUser, qid, answer).catch((e) => {
-			console.warn('Error in handleSaveQuestionAnswer:', e);
+			return saveQuestionAnswer(username, questionId, answer).catch((e) => {
+				console.warn('Error in handleSaveQuestionAnswer:', e);
+			});
 		});
 	};
 }

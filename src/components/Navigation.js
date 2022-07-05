@@ -10,6 +10,7 @@ import companyLogo from '../assets/companyavatar.png';
 //import { setAuthedUser } from '../actions/authedUser';
 import { handleLogoutAction } from '../actions/authedUser';
 
+
 const withRouter = (Component) => {
 	const ComponentWithRouterProp = (props) => {
 		let location = useLocation();
@@ -21,12 +22,7 @@ const withRouter = (Component) => {
 };
 
 const Navigation = (props) => {
-	/*const [authedUser, setAuthedUser] = useState(props.authedUser);
-	let users = props.users;
-
-	useEffect(() => {
-		setAuthedUser(props.authedUser);
-	}, [props.authedUser]);*/
+	
 
 	const { location } = props.router;
 
@@ -72,7 +68,7 @@ const Navigation = (props) => {
 						<Nav.Link as={Link} to='#'>
 							{props.name}
 						</Nav.Link>
-
+						
 						{/* Need Avatar */}
 						<Nav.Link as={Link} to='#' onClick={props.onLogoutClick}>
 							Sign Out
