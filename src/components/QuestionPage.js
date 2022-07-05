@@ -1,17 +1,19 @@
 import React, { Fragment } from 'react';
 //import { connect } from 'react-redux';
+//import { handleSaveQuestionAnswer } from '../actions/users';
+//import Form from 'react-bootstrap/Form';
+//import Button from 'react-bootstrap/Button';
 
-import Card from 'react-bootstrap/Card';
+
 
 const QuestionPage = (props) => {
+
 	return (
 		<Fragment>
-			<Card>
-				<Card.Header className='text-center my-3'>
-					Would You Rather...
-				</Card.Header>
-				<Card.Body>Questions</Card.Body>
-			</Card>
+			<div>
+				<h4>Would you rather...</h4>
+			</div>
+		
 		</Fragment>
 	);
 };
