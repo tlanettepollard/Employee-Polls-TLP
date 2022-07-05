@@ -23,8 +23,7 @@ const Login = ({ users, dispatch }) => {
 		<Fragment>
 			<Container fluid>
 				<LoadingBar />
-				<Row 
-					className='justify-contents-center align-items-center m-auto pt-4'>
+				<Row className='justify-contents-center align-items-center m-auto pt-4'>
 					<Col xs={12} md={6} className='m-auto'>
 						<h1 className='text-center app-heading'>
 							Welcome to Employee Polls!
