@@ -10,7 +10,8 @@ import Home from './Home';
 import NewPoll from './NewPoll';
 //import QuestionPage from './QuestionPage';
 import QuestionPageSub from './QuestionPageSub';
-import Leaderboard from './Leaderboard';
+//import Leaderboard from './Leaderboard';
+import LeaderboardSub from './LeaderboardSub';
 import '../App.css';
 
 const App = (props) => {
@@ -31,7 +32,7 @@ const App = (props) => {
 					<Route path='/' exact element={<Home />} />
 					<Route path='/questions/:qid' element={<QuestionPageSub />} />
 					<Route path='/new' element={<NewPoll />} />
-					<Route path='/leaderboard' element={<Leaderboard />} />
+					<Route path='/leaderboard' element={<LeaderboardSub />} />
 				</Routes>
 			</div>
 		</Fragment>
