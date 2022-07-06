@@ -1,9 +1,14 @@
+import SarahImg from '../assets/AvatarSarah.png';
+import TylerImg from '../assets/AvatarTyler.png';
+import ZenobiaImg from '../assets/AvatarZenobia.png';
+import MikeImg from '../assets/AvatarMike.png';
+
 let users = {
 	sarahedo: {
 		id: 'sarahedo',
 		password: 'password123',
 		name: 'Sarah Edo',
-		avatarURL: '../assets/companyavatar.png',
+		avatarURL: SarahImg,
 		answers: {
 			'8xf0y6ziyjabvozdd253nd': 'optionOne',
 			'6ni6ok3ym7mf1p33lnez': 'optionOne',
@@ -16,7 +21,7 @@ let users = {
 		id: 'tylermcginnis',
 		password: 'abc321',
 		name: 'Tyler McGinnis',
-		avatarURL: '../assets/AvatarTyler.png',
+		avatarURL: TylerImg,
 		answers: {
 			vthrdm985a262al8qx3do: 'optionOne',
 			xj352vofupe1dqz9emx13r: 'optionTwo',
@@ -27,7 +32,7 @@ let users = {
 		id: 'mtsamis',
 		password: 'xyz123',
 		name: 'Mike Tsamis',
-		avatarURL: '../assets/AvatarMike.png',
+		avatarURL: MikeImg,
 		answers: {
 			xj352vofupe1dqz9emx13r: 'optionOne',
 			vthrdm985a262al8qx3do: 'optionTwo',
@@ -39,7 +44,7 @@ let users = {
 		id: 'zoshikanlu',
 		password: 'pass246',
 		name: 'Zenobia Oshikanlu',
-		avatarURL: '../assets/AvatarZenobia.png',
+		avatarURL: ZenobiaImg,
 		answers: {
 			xj352vofupe1dqz9emx13r: 'optionOne',
 		},

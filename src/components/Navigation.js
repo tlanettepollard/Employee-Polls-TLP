@@ -6,10 +6,9 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 //import Image from 'react-bootstrap/Image';
 import companyLogo from '../assets/companyavatar.png';
-//import Avatar from './Avatar';
+import Avatar from './Avatar';
 //import { setAuthedUser } from '../actions/authedUser';
 import { handleLogoutAction } from '../actions/authedUser';
-
 
 const withRouter = (Component) => {
 	const ComponentWithRouterProp = (props) => {
@@ -22,7 +21,8 @@ const withRouter = (Component) => {
 };
 
 const Navigation = (props) => {
-	
+	const author = props;
+	const { name } = author;
 
 	const { location } = props.router;
 
@@ -65,10 +65,11 @@ const Navigation = (props) => {
 						</Nav.Item>
 					</Nav>
 					<Nav className='justify-content-end'>
+						<Avatar avatarURL={author.avatarURL} className='mr-2' />
 						<Nav.Link as={Link} to='#'>
-							{props.name}
+							{name}
 						</Nav.Link>
-						
+
 						{/* Need Avatar */}
 						<Nav.Link as={Link} to='#' onClick={props.onLogoutClick}>
 							Sign Out
