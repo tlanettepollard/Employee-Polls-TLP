@@ -12,23 +12,22 @@ import Avatar from './Avatar';
 //import { useNavigate } from 'react-router-dom';
 
 const UserCard = (props) => {
-	const { question, name, author } = props;
-	const { timestamp, id } = question;
+	const { question, author } = props;
+	const { optionOne, timestamp, id } = question;
+	const { name, avatarURL } = author;
 
 	return (
 		<Fragment>
 			<Container>
-				<Row className='justify-content-center my-2'>
+				<Row className='justify-content-center'>
 					<Col xs={12} md={6}>
 						<Card bg='light' border='primary' className='m-3'>
 							<Card.Header className='text-left'>
-								<Avatar avatarURL={author} />
+								<Avatar avatarURL={avatarURL} className='mr-2' />
 								{name} asks:
 							</Card.Header>
 							<Card.Body className='text-center'>
-								<Card.Text>
-									{formatDate(props.question.timestamp)}...?
-								</Card.Text>
+								<Card.Text>{optionOne.text.slice(0, 50)}...?</Card.Text>
 								<Link to={`/questions/${id}`}>
 									<Button variant='primary'>Show Details</Button>
 								</Link>

@@ -8,8 +8,8 @@ import Login from './Login';
 import Navigation from './Navigation';
 import Home from './Home';
 import NewPoll from './NewPoll';
-import QuestionPage from './QuestionPage';
-//import QuestionPageSub from './QuestionPageSub';
+//import QuestionPage from './QuestionPage';
+import QuestionPageSub from './QuestionPageSub';
 import Leaderboard from './Leaderboard';
 import '../App.css';
 
@@ -29,7 +29,7 @@ const App = (props) => {
 				<LoadingBar />
 				<Routes>
 					<Route path='/' exact element={<Home />} />
-					<Route path='/questions/:qid' element={<QuestionPage />} />
+					<Route path='/questions/:qid' element={<QuestionPageSub />} />
 					<Route path='/new' element={<NewPoll />} />
 					<Route path='/leaderboard' element={<Leaderboard />} />
 				</Routes>
