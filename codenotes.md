@@ -38,3 +38,7 @@ Resources
 ## 06/29/2022
 
 I decided to start over again following James Priest's coding notes and the Chirper App. I'm having such a hard time with this app. I've looked at others and I keep getting errors.
+
+## 07/06/2022
+
+Hi. I'm still working on this project. Trying to start over again.
