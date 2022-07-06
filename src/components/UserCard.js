@@ -12,9 +12,8 @@ import Avatar from './Avatar';
 //import { useNavigate } from 'react-router-dom';
 
 const UserCard = (props) => {
-	const { question, author } = props;
-	const { optionOne, timestamp, id } = question;
-	const { name, avatarURL } = author;
+	const { question, name, author } = props;
+	const { timestamp, id } = question;
 
 	return (
 		<Fragment>
@@ -23,11 +22,13 @@ const UserCard = (props) => {
 					<Col xs={12} md={6}>
 						<Card bg='light' border='primary' className='m-3'>
 							<Card.Header className='text-left'>
-								<Avatar avatarURL={avatarURL} />
+								<Avatar avatarURL={author} />
 								{name} asks:
 							</Card.Header>
 							<Card.Body className='text-center'>
-								<Card.Text>{optionOne.text.slice(0, 50)}...?</Card.Text>
+								<Card.Text>
+									{formatDate(props.question.timestamp)}...?
+								</Card.Text>
 								<Link to={`/questions/${id}`}>
 									<Button variant='primary'>Show Details</Button>
 								</Link>
