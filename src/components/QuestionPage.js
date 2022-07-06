@@ -5,13 +5,14 @@ import {
 	handleSaveQuestionAnswer,
 	OPTION_ONE,
 	OPTION_TWO,
-} from '../actions/users';
+} from '../actions/questions';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 //import Image from 'react-bootstrap/Image';
+import Avatar from './Avatar';
 
 const withRouter = (Component) => {
 	const ComponentWithRouterProp = (props) => {
@@ -37,6 +38,7 @@ const QuestionPage = (props) => {
 	return (
 		<Fragment>
 			<Container fluid>
+				<Avatar />
 				{/*<Image
 					src={props.user.avatarURL}
 					alt={`Avatar of ${props.user.name}`}
@@ -80,7 +82,6 @@ const QuestionPage = (props) => {
 		</Fragment>
 	);
 };
-
 
 const mapStateToProps = ({ authedUser, questions, users }, { router }) => {
 	const question = questions.byId[router.params.id];
