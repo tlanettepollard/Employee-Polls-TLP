@@ -4,15 +4,14 @@ import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-//import { ListGroup } from 'react-bootstrap/ListGroup';
+import ListGroup from 'react-bootstrap/ListGroup';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { formatDate } from '../utils/helpers';
 import PageNotFound from './PageNotFound';
 import Avatar from './Avatar';
 
 const AnsweredQuestion = (props) => {
-    const { question, author, authedUser } = props;
-    
+	const { question, author, authedUser } = props;
 
 	if (question === null) {
 		return <PageNotFound />;
@@ -40,15 +39,15 @@ const AnsweredQuestion = (props) => {
 							</Card.Header>
 
 							<Card.Body className='d-flex justify-content-center'>
-								<ul variant='flush'>
-									<li>
+								<ListGroup as='ul' variant='flush'>
+									<ListGroup.Item as='li'>
 										{optionOne.text}
 										{optionOne.votes.includes(authedUser) ? (
 											<span className='text-danger ml-2'>
 												&lt;- Your choice
 											</span>
 										) : null}
-									</li>
+									</ListGroup.Item>
 									<ProgressBar
 										now={optionOnePercent}
 										label={`${optionOnePercent}`}
@@ -59,14 +58,14 @@ const AnsweredQuestion = (props) => {
 										{''} users
 									</Card.Text>
 
-									<li>
+									<ListGroup.Item as='li'>
 										{optionTwo.text}
 										{optionTwo.votes.includes(authedUser) ? (
 											<span className='text-danger ml-2'>
 												&lt;- Your choice
 											</span>
 										) : null}
-									</li>
+									</ListGroup.Item>
 									<ProgressBar
 										now={optionTwoPercent}
 										label={`${optionTwoPercent}`}
@@ -76,7 +75,7 @@ const AnsweredQuestion = (props) => {
 										chosen by {optionTwo.votes.length} out of {totalNumVotes}
 										{''} users
 									</Card.Text>
-								</ul>
+								</ListGroup>
 							</Card.Body>
 							<Card.Footer>
 								<small className='text-muted'>{formatDate(timestamp)}</small>

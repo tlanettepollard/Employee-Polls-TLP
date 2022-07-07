@@ -7,7 +7,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import { formatDate } from '../utils/helpers';
-import { handleSaveQuestionAnswer } from '../actions/questions';
+import { handleSaveAnswer } from '../actions/questions';
 import Avatar from './Avatar';
 import PageNotFound from './PageNotFound';
 
@@ -20,7 +20,7 @@ const UnansweredQuestion = (props) => {
 		e.preventDefault();
 
 		if (answer !== '') {
-			dispatch(handleSaveQuestionAnswer(id, answer));
+			dispatch(handleSaveAnswer(id, answer));
 		} else {
 			setErrorMsg({ errorMsg: 'You must make a choice.' });
 		}
