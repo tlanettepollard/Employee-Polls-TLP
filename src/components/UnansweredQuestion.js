@@ -7,7 +7,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import { formatDate } from '../utils/helpers';
-import { handleSaveQuestionAnswer } from '../actions/users';
+import { handleSaveQuestionAnswer } from '../actions/questions';
 import Avatar from './Avatar';
 import PageNotFound from './PageNotFound';
 

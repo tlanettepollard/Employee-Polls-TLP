@@ -1,4 +1,5 @@
-import { saveQuestion } from '../utils/api';
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
+import { saveQuestion, saveQuestionAnswer } from '../utils/api';
 import { addQuestionToUser } from './users';
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
@@ -36,5 +37,29 @@ export function handleSaveQuestion(optionOneText, optionTwoText, author) {
 				dispatch(addQuestionToUser(question));
 			}
 		);
+	};
+}
+
+export function handleSaveQuestionAnswer(qid, answer) {
+	return (dispatch, getState) => {
+		const { authedUser } = getState();
+
+		dispatch(showLoading());
+
+		return saveQuestionAnswer({
+			qid,
+			answer,
+			authedUser,
+		})
+			.then(() =>
+				dispatch(
+					addAnswerToQuestion({
+						qid,
+						answer,
+						authedUser,
+					})
+				)
+			)
+			.then(() => dispatch(hideLoading()));
 	};
 }
