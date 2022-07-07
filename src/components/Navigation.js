@@ -6,8 +6,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 //import Image from 'react-bootstrap/Image';
 import companyLogo from '../assets/companyavatar.png';
-import Avatar from './Avatar';
-//import { setAuthedUser } from '../actions/authedUser';
+//import Avatar from './Avatar';
 import { handleLogoutAction } from '../actions/authedUser';
 
 const withRouter = (Component) => {
@@ -21,9 +20,6 @@ const withRouter = (Component) => {
 };
 
 const Navigation = (props) => {
-	const author = props;
-	const { name } = author;
-
 	const { location } = props.router;
 
 	return (
@@ -65,9 +61,10 @@ const Navigation = (props) => {
 						</Nav.Item>
 					</Nav>
 					<Nav className='justify-content-end'>
-						<Avatar avatarURL={author.avatarURL} className='mr-2' />
+						{/*<Avatar avatarURL={user.avatarURL} className='mr-2' />*/}
+						{/* Problem with image rendering */}
 						<Nav.Link as={Link} to='#'>
-							{name}
+							{props.name}
 						</Nav.Link>
 
 						{/* Need Avatar */}
@@ -90,7 +87,6 @@ const mapStateToProps = ({ authedUser, users }) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		onLogoutClick: () => {
-			//setAuthedUser('');
 			dispatch(handleLogoutAction());
 		},
 	};

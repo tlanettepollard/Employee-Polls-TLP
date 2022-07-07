@@ -42,3 +42,6 @@ I decided to start over again following James Priest's coding notes and the Chir
 ## 07/06/2022
 
 Hi. I'm still working on this project. Trying to start over again.
+Error research: Helped with match.params.id.
+
+[React TypeError](https://stackoverflow.com/questions/70290770/react-typeerror-cannot-read-properties-of-undefined-reading-params)

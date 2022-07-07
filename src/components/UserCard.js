@@ -14,7 +14,7 @@ import Avatar from './Avatar';
 const UserCard = (props) => {
 	const { question, author } = props;
 	const { optionOne, timestamp, id } = question;
-	const {name} = author;
+	const { name } = author;
 
 	return (
 		<Fragment>
@@ -23,7 +23,7 @@ const UserCard = (props) => {
 					<Col xs={12} md={6}>
 						<Card bg='light' border='primary' className='m-3'>
 							<Card.Header className='text-left m-2 p-2'>
-								<Avatar avatarURL={author.avatarURL} className='mr-2' />
+								<Avatar avatarURL={author.avatarURL} className='m-2' />
 								{name}
 							</Card.Header>
 							<Card.Body className='text-center'>
