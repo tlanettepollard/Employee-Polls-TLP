@@ -18,7 +18,7 @@ export const saveQuestion = (question) => {
 	return _saveQuestion(question);
 };
 
-export const saveQuestionAnswer = ({ authedUser, qid, answer }) => {
+export const saveQuestionAnswer = ( info ) => {
 	// console.log('info', {authedUser, qid, answer});
-	return _saveQuestionAnswer({ authedUser, qid, answer });
+	return _saveQuestionAnswer(info);
 };

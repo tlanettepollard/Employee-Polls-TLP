@@ -1,93 +1,34 @@
 import {
 	RECEIVE_QUESTIONS,
+	ADD_ANSWER_TO_QUESTION,
 	ADD_QUESTION,
-	VOTE_QUESTION,
-	GROUP_QUESTIONS,
 } from '../actions/questions';
 
-export default function questions(
-	state = { byId: {}, allIds: [], answered: [], nonAnswered: [] },
-	action
-) {
+export default function questions(state = {}, action) {
 	switch (action.type) {
 		case RECEIVE_QUESTIONS:
-			const allIds = [...state.allIds, ...Object.keys(action.questions)];
-
-			const sortedIds = uniq(allIds)
-				.map((id) => {
-					const question = action.questions[id];
-					return question;
-				})
-				.sort((a, b) => a.timestamp - b.timestamp)
-				.reduce((prev, curr, idx, arr) => {
-					return [...prev, arr[idx].id];
-				}, []);
-
 			return {
 				...state,
-				byId: {
-					...state.byId,
-					...action.questions,
-				},
-				allIds: sortedIds,
+				...action.questions,
 			};
-		case ADD_QUESTION:
-			const { question } = action;
+		case ADD_ANSWER_TO_QUESTION:
+			const { authedUser, qid, answer } = action.answerInfo;
 			return {
 				...state,
-				[question.id]: question,
-			};
-		case GROUP_QUESTIONS:
-			const groupedQuestions = state.allIds.reduce(
-				(prev, curr, idx, arr) => {
-					let question = state.byId[curr];
-					if (
-						question.optionOne.votes.includes(action.username) ||
-						question.optionTwo.votes.includes(action.username)
-					) {
-						return {
-							answered: [...prev.answered, curr],
-							nonAnswered: [...prev.nonAnswered],
-						};
-					} else {
-						return {
-							answered: [...prev.answered],
-							nonAnswered: [...prev.nonAnswered, curr],
-						};
-					}
-				},
-				{
-					answered: [],
-					nonAnswered: [],
-				}
-			);
-			return {
-				...state,
-				...groupedQuestions,
-			};
-		case VOTE_QUESTION:
-			console.log('action', action);
-			return {
-				...state,
-				byId: {
-					...state.byId,
-					[action.questionId]: {
-						...state.byId[action.questionId],
-						[action.answer]: {
-							...state.byId[action.questionId][action.answer],
-							votes: [
-								...state.byId[action.questionId][action.answer].votes,
-								action.username,
-							],
-						},
+				[qid]: {
+					...state[qid],
+					[answer]: {
+						...state[qid][answer],
+						votes: state[qid][answer].votes.concat([authedUser]),
 					},
 				},
+			};
+		case ADD_QUESTION:
+			return {
+				...state,
+				[action.question.id]: action.question,
 			};
 		default:
 			return state;
 	}
-}
-
-function uniq(a) {
-	return Array.from(new Set(a));
 }

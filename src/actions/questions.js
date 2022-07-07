@@ -1,14 +1,9 @@
-import { getInitialData } from '../utils/api';
-import { showLoading, hideLoading } from 'react-redux-loading-bar';
+import { saveQuestion } from '../utils/api';
+import { addQuestionToUser } from './users';
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
+export const ADD_ANSWER_TO_QUESTION = 'ADD_ANSWER_TO_QUESTION';
 export const ADD_QUESTION = 'ADD_QUESTION';
-
-export const VOTE_QUESTION = 'VOTE_QUESTION';
-export const GROUP_QUESTIONS = 'GROUP_QUESTIONS';
-
-export const OPTION_ONE = 'OPTION_ONE';
-export const OPTION_TWO = 'OPTION_TWO';
 
 export function receiveQuestions(questions) {
 	return {
@@ -17,38 +12,29 @@ export function receiveQuestions(questions) {
 	};
 }
 
-export function groupQuestions(username) {
+export function addAnswerToQuestion(authedUser, qid, answer) {
 	return {
-		type: GROUP_QUESTIONS,
-		username: username,
+		type: ADD_ANSWER_TO_QUESTION,
+		authedUser,
+		qid,
+		answer,
 	};
 }
 
-// Action creator for answering question
-export function addAnswerToQuestion({ username, questionId, answer }) {
-	return {
-		type: VOTE_QUESTION,
-		username: username,
-		questionId: questionId,
-		answer: answer,
-	};
-}
-
-// Action creator to add question
-export function addQuestion(question) {
+function addQuestion(question) {
 	return {
 		type: ADD_QUESTION,
 		question,
 	};
 }
 
-export function handleSaveQuestionAnswer(username, questionId, answer) {
-	return (dispatch, getState) => {
-		dispatch(showLoading());
-		return getInitialData().then(() => {
-			dispatch(addAnswerToQuestion(username, questionId, answer));
-			dispatch(groupQuestions(username));
-			dispatch(hideLoading());
-		});
+export function handleSaveQuestion(optionOneText, optionTwoText, author) {
+	return (dispatch) => {
+		return saveQuestion({ optionOneText, optionTwoText, author }).then(
+			(question) => {
+				dispatch(addQuestion(question));
+				dispatch(addQuestionToUser(question));
+			}
+		);
 	};
 }
