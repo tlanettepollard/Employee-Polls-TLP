@@ -29,7 +29,7 @@ const UserCard = (props) => {
 							<Card.Body className='text-center'>
 								<Card.Text>{optionOne.text.slice(0, 50)}...?</Card.Text>
 
-								<Link to={`../questions/${id}`}>
+								<Link to={`/questions/${id}`}>
 									<Button variant='primary'>Show Details</Button>
 								</Link>
 							</Card.Body>

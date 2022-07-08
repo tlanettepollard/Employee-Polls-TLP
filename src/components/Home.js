@@ -23,7 +23,7 @@ const Home = (props) => {
 								<Container className='answered-questions'>
 									<Row className='m-auto w-100'>
 										<Col>
-											{[unanswered.length]
+											{unanswered.length
 												? unanswered.map((question) => (
 														<UserCard
 															key={question.id}
@@ -41,7 +41,7 @@ const Home = (props) => {
 								<Container className='unanswered-questions'>
 									<Row className='m-auto w-100'>
 										<Col>
-											{[answered.length]
+											{answered.length
 												? answered.map((question) => (
 														<UserCard
 															key={question.id}
