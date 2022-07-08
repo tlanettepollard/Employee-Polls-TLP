@@ -7,8 +7,9 @@ import { handleSaveAnswer } from '../actions/questions';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
-import Image from 'react-bootstrap/Image';
+//import Image from 'react-bootstrap/Image';
 import Button from 'react-bootstrap/Button';
+import Avatar from './Avatar';
 
 const withRouter = (Component) => {
 	const ComponentWithRouterProp = (props) => {
@@ -46,6 +47,7 @@ const QuestionPage = (props) => {
 		percentOptionOne,
 		percentOptionTwo,
 	} = question;
+	
 
 	const handleClick = (value) => {
 		const { dispatch, qid } = props;
@@ -56,7 +58,8 @@ const QuestionPage = (props) => {
 	return (
 		<Fragment>
 			<Container fluid>
-				<Image src={avatarURL} alt='user-avatar' fluid />
+				
+				<Avatar avatarURL={avatarURL} alt='user-avatar' fluid />
 				<h3>{name} wants to know </h3>
 			</Container>
 			<Container fluid>
