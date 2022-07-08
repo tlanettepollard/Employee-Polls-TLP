@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import ListGroup from 'react-bootstrap/ListGroup';
+//import ListGroup from 'react-bootstrap/ListGroup';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { formatDate } from '../utils/helpers';
 import PageNotFound from './PageNotFound';
@@ -39,15 +39,15 @@ const AnsweredQuestion = (props) => {
 							</Card.Header>
 
 							<Card.Body className='d-flex justify-content-center'>
-								<ListGroup as='ul' variant='flush'>
-									<ListGroup.Item as='li'>
+								<ul variant='flush'>
+									<li>
 										{optionOne.text}
 										{optionOne.votes.includes(authedUser) ? (
 											<span className='text-danger ml-2'>
 												&lt;- Your choice
 											</span>
 										) : null}
-									</ListGroup.Item>
+									</li>
 									<ProgressBar
 										now={optionOnePercent}
 										label={`${optionOnePercent}`}
@@ -58,14 +58,14 @@ const AnsweredQuestion = (props) => {
 										{''} users
 									</Card.Text>
 
-									<ListGroup.Item as='li'>
+									<li>
 										{optionTwo.text}
 										{optionTwo.votes.includes(authedUser) ? (
 											<span className='text-danger ml-2'>
 												&lt;- Your choice
 											</span>
 										) : null}
-									</ListGroup.Item>
+									</li>
 									<ProgressBar
 										now={optionTwoPercent}
 										label={`${optionTwoPercent}`}
@@ -75,7 +75,7 @@ const AnsweredQuestion = (props) => {
 										chosen by {optionTwo.votes.length} out of {totalNumVotes}
 										{''} users
 									</Card.Text>
-								</ListGroup>
+								</ul>
 							</Card.Body>
 							<Card.Footer>
 								<small className='text-muted'>{formatDate(timestamp)}</small>

@@ -1,6 +1,6 @@
-import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import { saveQuestion, saveQuestionAnswer } from '../utils/api';
-
+import { saveQuestionToUser, saveAnswerToUser } from './users';
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
 export const ADD_QUESTION = 'ADD_QUESTION';
@@ -13,22 +13,21 @@ export function receiveQuestions(questions) {
 	};
 }
 
-
-function addQuestion(question) {
+export function addQuestion(question) {
 	return {
 		type: ADD_QUESTION,
 		question,
 	};
 }
 
-function addAnswer({ qid, answer, authedUser }) {
+export function addAnswer({ qid, answer, authedUser }) {
 	return {
 		type: ADD_ANSWER,
 		answerInfo: {
 			qid,
 			answer,
-			authedUser
-		}
+			authedUser,
+		},
 	};
 }
 
@@ -36,37 +35,34 @@ export function handleSaveQuestion(optionOne, optionTwo) {
 	return (dispatch, getState) => {
 		const { authedUser } = getState();
 		dispatch(showLoading());
-
 		return saveQuestion({
 			optionOneText: optionOne,
 			optionTwoText: optionTwo,
-			author: authedUser
+			author: authedUser,
 		})
-			.then((question) => dispatch(addQuestion(question)))
-		.then(() => dispatch(hideLoading))
+			.then((question) => {
+				dispatch(addQuestion(question));
+				dispatch(saveQuestionToUser(question));
+				dispatch(hideLoading());
+			})
+			.catch(function () {
+				console.log('denied');
+			});
 	};
 }
 
 export function handleSaveAnswer(qid, answer) {
 	return (dispatch, getState) => {
 		const { authedUser } = getState();
-
-		dispatch(showLoading());
-
 		return saveQuestionAnswer({
-			qid,
-			answer,
 			authedUser,
+			qid,
+			answer
 		})
-			.then(() =>
-				dispatch(
-					addAnswer({
-						qid,
-						answer,
-						authedUser,
-					})
-				)
-			)
-			.then(() => dispatch(hideLoading()));
-	};
+			.then(() => {
+				dispatch(addQuestion({ authedUser, qid, answer }));
+				dispatch(saveAnswerToUser({ authedUser, qid, answer }))
+				dispatch(hideLoading());
+		})
+	}
 }
