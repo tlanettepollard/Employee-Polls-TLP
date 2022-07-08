@@ -31,7 +31,7 @@ const App = (props) => {
 				<LoadingBar />
 				<Routes>
 					<Route exact path='/' element={<Home />} />
-					<Route path='/questions/:qid' element={<QuestionPage />} />
+					<Route path='/questions/:id' element={<QuestionPage />} />
 					<Route exact path='/new' element={<NewPoll />} />
 					<Route exact path='/leaderboard' element={<LeaderboardSub />} />
 					<Route path='*' element={<PageNotFound />} />

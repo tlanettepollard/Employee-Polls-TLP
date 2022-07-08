@@ -6,7 +6,7 @@ import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { InputGroup } from 'react-bootstrap';
+import InputGroup from 'react-bootstrap/InputGroup';
 
 const NewPoll = ({ dispatch, authedUser }) => {
 	const navigate = useNavigate();
