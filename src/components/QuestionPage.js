@@ -66,7 +66,7 @@ const QuestionPage = (props) => {
 				/>
 				<h3 className='text-center my-4 p-3'>{name} wants to know... </h3>
 			</Container>
-			<Container fluid className='m-3'>
+			<Container fluid>
 				{!hasAnswered ? (
 					<Row className='justify-content-center'>
 						<Col xs={12} md={6}>
@@ -89,7 +89,7 @@ const QuestionPage = (props) => {
 						</Col>
 					</Row>
 				) : (
-					<Container>
+					<Container fluid>
 						<Card className='answered-question w-75 mx-auto'>
 							<Card.Header className='fw-bold fs-4 card-header'>
 								You have already answered this question.
@@ -105,13 +105,13 @@ const QuestionPage = (props) => {
 								<Container
 									fluid
 									className='d-flex-column justify-content-between align-items-center'>
-									<div className='percent-card d-flex justify-content-between align-items-center'>
-										<p className='fs-5'>{optionOneText}</p>
-										<p className='fs-5'>{percentOptionOne} %</p>
+									<div className='percent-card d-flex justify-content-between align-items-center w-100 mx-auto'>
+										<p className='fs-6'>{optionOneText}</p>
+										<p className='fs-6'>{percentOptionOne} %</p>
 									</div>
-									<div className='percent-card d-flex justify-content-between align-items-center m-2'>
-										<p className='fs-5'>{optionTwoText}</p>
-										<p className='fs-5'>{percentOptionTwo} %</p>
+									<div className='percent-card d-flex justify-content-between align-items-center mx-auto w-100'>
+										<p className='fs-6'>{optionTwoText}</p>
+										<p className='fs-6'>{percentOptionTwo} %</p>
 									</div>
 								</Container>
 								<hr />
