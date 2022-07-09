@@ -2,14 +2,14 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { formatQuestion } from '../utils/helpers';
 import { handleSaveAnswer } from '../actions/questions';
-//import UnansweredQuestion from './UnansweredQuestion';
-//import AnsweredQuestion from './AnsweredQuestion';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
-//import Image from 'react-bootstrap/Image';
+import Image from 'react-bootstrap/Image';
 import Button from 'react-bootstrap/Button';
-import Avatar from './Avatar';
+
 
 const withRouter = (Component) => {
 	const ComponentWithRouterProp = (props) => {
@@ -47,7 +47,6 @@ const QuestionPage = (props) => {
 		percentOptionOne,
 		percentOptionTwo,
 	} = question;
-	
 
 	const handleClick = (value) => {
 		const { dispatch, qid } = props;
@@ -57,25 +56,36 @@ const QuestionPage = (props) => {
 
 	return (
 		<Fragment>
-			<Container fluid>
-				
-				<Avatar avatarURL={avatarURL} alt='user-avatar' fluid />
-				<h3>{name} wants to know </h3>
+			<Container fluid className='my-5 p-3'>
+				<Image
+					src={avatarURL}
+					alt='user-avatar'
+					roundedCircle
+					width='100'
+					className='mx-auto d-block'
+				/>
+				<h3 className='text-center my-4 p-3'>{name} wants to know... </h3>
 			</Container>
-			<Container fluid>
-				<h4>Would you rather...</h4>
+			<Container fluid className='m-3'>
 				{!hasAnswered ? (
-					<Card>
-						<Card.Body>
-							<Button onClick={() => handleClick('optionOne')}>
-								{optionOneText}
-							</Button>
-							<hr />
-							<Button onClick={() => handleClick('optionTwo')}>
-								{optionTwoText}
-							</Button>
-						</Card.Body>
-					</Card>
+					<Row className='justify-content-center'>
+						<Col xs={12} md={6}>
+							<Card className='my-3 p-4'>
+								<Card.Header className='text-center'>
+									Would you rather...
+								</Card.Header>
+								<Card.Body className='d-flex-column align-items-center'>
+									<Button onClick={() => handleClick('optionOne')}>
+										{optionOneText}
+									</Button>
+									<hr />
+									<Button onClick={() => handleClick('optionTwo')}>
+										{optionTwoText}
+									</Button>
+								</Card.Body>
+							</Card>
+						</Col>
+					</Row>
 				) : (
 					<Card className='answered-question'>
 						<Card.Body>

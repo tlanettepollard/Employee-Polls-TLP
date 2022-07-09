@@ -7,7 +7,6 @@ import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Image from 'react-bootstrap/Image';
 import companyLogo from '../assets/companyavatar.png';
-//import Avatar from './Avatar';
 import { handleLogoutAction } from '../actions/authedUser';
 
 const withRouter = (Component) => {
@@ -97,7 +96,7 @@ const Navigation = (props) => {
 								</Container>
 							</Nav.Link>
 						)}
-						{/* Need Avatar */}
+						
 						<Nav.Link
 							as={Link}
 							to='#'
@@ -120,16 +119,7 @@ const mapStateToProps = ({ authedUser, users }) => {
 	};
 };
 
-/*const mapDispatchToProps = (dispatch) => {
-	return {
-		onLogoutClick: () => {
-			dispatch(handleLogoutAction());
-		},
-	};
-};*/
 
 export default withRouter(connect(mapStateToProps)(Navigation));
 
-/*withRouter(
-	connect(mapStateToProps, mapDispatchToProps)(Navigation)
-);*/
+
