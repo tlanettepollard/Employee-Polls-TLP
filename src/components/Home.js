@@ -29,8 +29,8 @@ const Home = (props) => {
 															key={question.id}
 															id={question.id}
 															question={question}
-														user={users[question.author]}
-														unanswered={true}
+															user={users[question.author]}
+															unanswered={true}
 														/>
 												  ))
 												: ''}
@@ -48,8 +48,8 @@ const Home = (props) => {
 															key={question.id}
 															id={question.id}
 															question={question}
-														user={users[question.author]}
-														answered={true}
+															user={users[question.author]}
+															answered={true}
 														/>
 												  ))
 												: ''}

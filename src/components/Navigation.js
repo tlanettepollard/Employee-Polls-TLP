@@ -6,7 +6,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 //import Image from 'react-bootstrap/Image';
 import companyLogo from '../assets/companyavatar.png';
-//import Avatar from './Avatar';
+import Avatar from './Avatar';
 import { handleLogoutAction } from '../actions/authedUser';
 
 const withRouter = (Component) => {
@@ -21,6 +21,9 @@ const withRouter = (Component) => {
 
 const Navigation = (props) => {
 	const { location } = props.router;
+	const { user, authedUser} = props;
+	const avatar = user ? user.avatarURL : '';
+	const name = user ? user.name : '';
 
 	return (
 		<Fragment>
@@ -61,16 +64,21 @@ const Navigation = (props) => {
 						</Nav.Item>
 					</Nav>
 					<Nav className='justify-content-end'>
-						{/*<Avatar avatarURL={user.avatarURL} className='mr-2' />*/}
+						<Avatar avatarURL={avatar} className='mr-2' />
 						{/* Problem with image rendering */}
 						<Nav.Link as={Link} to='#'>
-							{props.name}
+							{name}
 						</Nav.Link>
 
 						{/* Need Avatar */}
+						{authedUser ? 
 						<Nav.Link as={Link} to='#' onClick={props.onLogoutClick}>
 							Sign Out
-						</Nav.Link>
+							</Nav.Link>
+							: <Link to='/login'>
+								<span>Login</span>
+							</Link>
+						}
 					</Nav>
 				</Navbar.Collapse>
 			</Navbar>
