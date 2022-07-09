@@ -10,7 +10,6 @@ import Card from 'react-bootstrap/Card';
 import Image from 'react-bootstrap/Image';
 import Button from 'react-bootstrap/Button';
 
-
 const withRouter = (Component) => {
 	const ComponentWithRouterProp = (props) => {
 		let location = useLocation();
@@ -50,7 +49,8 @@ const QuestionPage = (props) => {
 
 	const handleClick = (value) => {
 		const { dispatch, qid } = props;
-		dispatch(handleSaveAnswer(qid, value));
+		const answer = value;
+		dispatch(handleSaveAnswer(qid, answer));
 		navigate('/questions/' + qid);
 	};
 
@@ -71,49 +71,59 @@ const QuestionPage = (props) => {
 					<Row className='justify-content-center'>
 						<Col xs={12} md={6}>
 							<Card className='my-3 p-4'>
-								<Card.Header className='text-center'>
+								<Card.Header className='text-center display-6'>
 									Would you rather...
 								</Card.Header>
 								<Card.Body className='d-flex-column align-items-center'>
+									<p className='fw-bold'>{optionOneText}</p>
 									<Button onClick={() => handleClick('optionOne')}>
-										{optionOneText}
+										Choose Option 1
 									</Button>
 									<hr />
+									<p className='fw-bold'>{optionTwoText}</p>
 									<Button onClick={() => handleClick('optionTwo')}>
-										{optionTwoText}
+										Choose Option 2
 									</Button>
 								</Card.Body>
 							</Card>
 						</Col>
 					</Row>
 				) : (
-					<Card className='answered-question'>
-						<Card.Body>
-							<span>You have already answered this question.</span>
-							<Button disabled>{selectedVote}</Button>
-							<hr />
-							<h4>Current vote split:</h4>
-							<Container fluid className='percent-container'>
-								<div className='percent-card'>
-									<Button name='optionOneButton' className='options'>
-										{optionOneText}
-									</Button>
-									<span>{percentOptionOne}</span>
-								</div>
-								<div className='percent-card'>
-									<Button name='optionTwoButton' className='options'>
-										{optionTwoText}
-									</Button>
-									<span>{percentOptionTwo}</span>
-								</div>
-							</Container>
-							<hr />
-							<span>Total votes: </span>
-							<Container className='percent-container'>
-								<span>{totalVotes}</span>
-							</Container>
-						</Card.Body>
-					</Card>
+					<Container>
+						<Card className='answered-question w-75 mx-auto'>
+							<Card.Header className='fw-bold fs-4 card-header'>
+								You have already answered this question.
+							</Card.Header>
+							<Card.Body>
+								<p className='fs-5'>{selectedVote}</p>
+								<Button disabled className='fs-4'>
+									Vote
+								</Button>
+
+								<hr />
+								<h4 className='p-2 fw-bold'>Current vote split:</h4>
+								<Container
+									fluid
+									className='d-flex-column justify-content-between align-items-center'>
+									<div className='percent-card d-flex justify-content-between align-items-center'>
+										<p className='fs-5'>{optionOneText}</p>
+										<p className='fs-5'>{percentOptionOne} %</p>
+									</div>
+									<div className='percent-card d-flex justify-content-between align-items-center m-2'>
+										<p className='fs-5'>{optionTwoText}</p>
+										<p className='fs-5'>{percentOptionTwo} %</p>
+									</div>
+								</Container>
+								<hr />
+								<Container
+									fluid
+									className='d-flex justify-content-between align-items-center'>
+									<h4 className='fw-bold'>Total votes: </h4>
+									<p className='fs-5'>{totalVotes} votes </p>
+								</Container>
+							</Card.Body>
+						</Card>
+					</Container>
 				)}
 			</Container>
 		</Fragment>
