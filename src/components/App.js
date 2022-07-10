@@ -10,8 +10,8 @@ import Home from './Home';
 import NewPoll from './NewPoll';
 import QuestionPage from './QuestionPage';
 //import QuestionPageSub from './QuestionPageSub';
-//import Leaderboard from './Leaderboard';
-import LeaderboardSub from './LeaderboardSub';
+import Leaderboard from './Leaderboard';
+//import LeaderboardSub from './Leaderboard';
 import PageNotFound from './PageNotFound';
 import '../App.css';
 
@@ -33,7 +33,7 @@ const App = (props) => {
 					<Route exact path='/' element={<Home />} />
 					<Route path='/questions/:id' element={<QuestionPage />} />
 					<Route exact path='/new' element={<NewPoll />} />
-					<Route exact path='/leaderboard' element={<LeaderboardSub />} />
+					<Route exact path='/leaderboard' element={<Leaderboard />} />
 					<Route path='*' element={<PageNotFound />} />
 					<Route exact path='/login' element={<Login />} />
 				</Routes>
@@ -42,7 +42,7 @@ const App = (props) => {
 	);
 };
 
-const mapStateToProps = ( state ) => ({
+const mapStateToProps = (state) => ({
 	authedUser: state.authedUser,
 });
 
