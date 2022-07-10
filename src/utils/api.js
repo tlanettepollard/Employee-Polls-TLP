@@ -3,6 +3,7 @@ import {
 	_getQuestions,
 	_saveQuestionAnswer,
 	_saveQuestion,
+	formatQuestion
 } from './_DATA.js';
 
 export const getInitialData = () => {
@@ -22,3 +23,7 @@ export const saveQuestionAnswer = ( info ) => {
 	// console.log('info', {authedUser, qid, answer});
 	return _saveQuestionAnswer(info);
 };
+
+export function formatNewQuestion(info) {
+	return formatQuestion(info)
+}

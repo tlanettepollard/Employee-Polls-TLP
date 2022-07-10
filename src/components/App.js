@@ -10,8 +10,9 @@ import Home from './Home';
 import NewPoll from './NewPoll';
 import QuestionPage from './QuestionPage';
 //import QuestionPageSub from './QuestionPageSub';
-//import Leaderboard from './Leaderboard';
-import LeaderboardSub from './LeaderboardSub';
+import Leaderboard from './Leaderboard';
+//import LeaderboardSub from './Leaderboard';
+import PageNotFound from './PageNotFound';
 import '../App.css';
 
 const App = (props) => {
@@ -29,20 +30,20 @@ const App = (props) => {
 				<Navigation />
 				<LoadingBar />
 				<Routes>
-					<Route path='/' exact element={<Home />} />
-					<Route path='/questions/:qid' element={<QuestionPage />} />
-					<Route path='/new' element={<NewPoll />} />
-					<Route path='/leaderboard' element={<LeaderboardSub />} />
+					<Route exact path='/' element={<Home />} />
+					<Route path='/questions/:id' element={<QuestionPage />} />
+					<Route exact path='/new' element={<NewPoll />} />
+					<Route exact path='/leaderboard' element={<Leaderboard />} />
+					<Route path='*' element={<PageNotFound />} />
+					<Route exact path='/login' element={<Login />} />
 				</Routes>
 			</div>
 		</Fragment>
 	);
 };
 
-const mapStateToProps = (state) => {
-	return {
-		authedUser: state.authedUser,
-	};
-};
+const mapStateToProps = (state) => ({
+	authedUser: state.authedUser,
+});
 
 export default connect(mapStateToProps)(App);
