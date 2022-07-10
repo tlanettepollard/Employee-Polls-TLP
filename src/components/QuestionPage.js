@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { formatQuestion } from '../utils/helpers';
 import { handleSaveAnswer } from '../actions/questions';
-import { useNavigate, useParams, useLocation } from 'react-router-dom';
+import { Link, useNavigate, useParams, useLocation } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -49,8 +49,7 @@ const QuestionPage = (props) => {
 
 	const handleClick = (value) => {
 		const { dispatch, qid } = props;
-		const answer = value;
-		dispatch(handleSaveAnswer(qid, answer));
+		dispatch(handleSaveAnswer(qid, value));
 		navigate('/questions/' + qid);
 	};
 
@@ -68,26 +67,35 @@ const QuestionPage = (props) => {
 			</Container>
 			<Container fluid>
 				{!hasAnswered ? (
-					<Row className='justify-content-center'>
-						<Col xs={12} md={6}>
-							<Card className='my-3 p-4'>
-								<Card.Header className='text-center display-6'>
-									Would you rather...
-								</Card.Header>
-								<Card.Body className='d-flex-column align-items-center'>
-									<p className='fw-bold'>{optionOneText}</p>
-									<Button onClick={() => handleClick('optionOne')}>
-										Choose Option 1
-									</Button>
-									<hr />
-									<p className='fw-bold'>{optionTwoText}</p>
-									<Button onClick={() => handleClick('optionTwo')}>
-										Choose Option 2
-									</Button>
-								</Card.Body>
-							</Card>
-						</Col>
-					</Row>
+					<Container fluid>
+						<Row className='justify-content-center'>
+							<Col xs={12} md={6}>
+								<Card className='my-3 p-4'>
+									<Card.Header className='text-center display-6'>
+										Would you rather...
+									</Card.Header>
+									<Card.Body className='d-flex-column align-items-center'>
+										<p className='fw-bold'>{optionOneText}</p>
+										<Button onClick={() => handleClick('optionOne')}>
+											Choose Option 1
+										</Button>
+										<hr />
+										<p className='fw-bold'>{optionTwoText}</p>
+										<Button onClick={() => handleClick('optionTwo')}>
+											Choose Option 2
+										</Button>
+									</Card.Body>
+								</Card>
+								<Container fluid className='my-5 d-flex justify-content-center'>
+									<Link to='/'>
+										<Button variant='primary' className=' btn-lg p-2'>
+											Back to Home
+										</Button>
+									</Link>
+								</Container>
+							</Col>
+						</Row>
+					</Container>
 				) : (
 					<Container fluid>
 						<Card className='answered-question w-75 mx-auto'>
@@ -123,6 +131,13 @@ const QuestionPage = (props) => {
 								</Container>
 							</Card.Body>
 						</Card>
+						<Container fluid className='my-5 d-flex justify-content-center'>
+							<Link to='/'>
+								<Button variant='primary' className=' btn-lg p-2'>
+									Back to Home
+								</Button>
+							</Link>
+						</Container>
 					</Container>
 				)}
 			</Container>
@@ -144,27 +159,3 @@ const mapStateToProps = ({ authedUser, users, questions }, props) => {
 };
 
 export default withRouter(connect(mapStateToProps)(QuestionPage));
-
-//MAP Reference
-/*const QuestionPage = (props) => {
-	const { authedUserAnswers } = props;
-	const id = useParams();
-	const answered = authedUserAnswers.hasOwnProperty(id) ? true : false;
-
-	return (
-		<Fragment>
-			<h2 className='text-center my-3'>Would You Rather...</h2>
-			{answered ? <AnsweredQuestion id={id} /> : <UnansweredQuestion id={id} />}
-		</Fragment>
-	);
-};
-
-const mapStateToProps = ({ authedUser, users }) => {
-	const authedUserAnswers = users[authedUser].answers;
-
-	return {
-		authedUserAnswers,
-	};
-};
-
-export default connect(mapStateToProps)(QuestionPage); */

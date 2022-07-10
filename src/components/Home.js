@@ -27,7 +27,7 @@ const Home = (props) => {
 															id={question.id}
 															question={question}
 															user={users[question.author]}
-															unanswered={true}
+															//unanswered={true}
 														/>
 												  ))
 												: ''}
@@ -46,7 +46,7 @@ const Home = (props) => {
 															id={question.id}
 															question={question}
 															user={users[question.author]}
-															answered={true}
+															//answered={true}
 														/>
 												  ))
 												: ''}
