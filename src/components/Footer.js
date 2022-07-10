@@ -8,7 +8,7 @@ const Footer = () => {
 		<Fragment>
 			<Container
 				fluid
-				className='w-100 mt-3 p-3 d-flex footer flex-column justify-content-center align-items-center'>
+				className='w-100  d-flex footer flex-column justify-content-center align-items-center'>
 				<Row className='d-flex flex-column text-center p-3'>
 					<Col className='p-1'>
 						<a href='https://github.com/tlanettepollard'>

@@ -9,6 +9,7 @@ import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Image from 'react-bootstrap/Image';
 import companyLogo from '../assets/companyavatar.png';
+import Footer from './Footer';
 
 const NewPoll = ({ dispatch, authedUser }) => {
 	const navigate = useNavigate();
@@ -109,6 +110,7 @@ const NewPoll = ({ dispatch, authedUser }) => {
 					</Card.Body>
 				</Card>
 			</Container>
+			<Footer />
 		</Fragment>
 	);
 };
