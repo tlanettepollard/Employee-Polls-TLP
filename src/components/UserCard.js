@@ -6,10 +6,9 @@ import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
-//import Image from 'react-bootstrap/Image';
 import { formatDate } from '../utils/helpers';
 import Avatar from './Avatar';
-//import { useNavigate } from 'react-router-dom';
+
 
 const UserCard = (props) => {
 	const { question, author } = props;

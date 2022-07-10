@@ -23,27 +23,28 @@ const Login = ({ users, dispatch }) => {
 		<Fragment>
 			<Container fluid>
 				<LoadingBar />
-				<Row className='justify-contents-center align-items-center m-auto pt-4'>
+				<Row className='justify-contents-center align-items-center m-auto pt-5'>
 					<Col xs={12} md={6} className='m-auto'>
-						<h1 className='text-center app-heading'>
-							Welcome to Employee Polls!
-						</h1>
-						<h3 className='text-center app-subheading'>
-							Please sign in to continue.
-						</h3>
-						<Image
-							src={companyLogo}
-							alt='company logo'
-							className='w-80 p-5'
-							fluid
-						/>
+						<Card className='bg-light text-center mt-5 border-info'>
+							<Card.Header className='p-5 bg-info'>
+								<h1 className='text-center fw-bold'>
+									Welcome to the Employee Polls App!
+								</h1>
+								<h3 className='text-center p-2'>Please sign in to continue.</h3>
+							</Card.Header>
+							<Image
+								src={companyLogo}
+								alt='company logo'
+								className='w-80 p-5'
+								fluid
+							/>
 
-						<Card className='bg-light text-center'>
 							<Card.Body>
 								<Form className='Form'>
 									<Form.Group>
 										<Form.Control
 											as='select'
+											size='lg'
 											aria-label='Select a User'
 											className='p-2'
 											onChange={(e) => setUserSelected(e.target.value)}
@@ -58,11 +59,13 @@ const Login = ({ users, dispatch }) => {
 											))}
 										</Form.Control>
 										{userSelected === 'none' ? (
-											<Button disabled className='w-100 mt-3'>
-												Sign In
+											<Button disabled className='w-100 mt-3 btn-lg btn-info'>
+												<span className='fw-bold'>Sign In</span>
 											</Button>
 										) : (
-											<Button onClick={handleLogin} className='w-100'>
+											<Button
+												onClick={handleLogin}
+												className='w-100 mt-3 btn-lg btn-info'>
 												Sign In
 											</Button>
 										)}

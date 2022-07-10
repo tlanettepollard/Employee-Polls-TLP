@@ -16,7 +16,10 @@ const Home = (props) => {
 				<Row>
 					<Col>
 						<Tabs>
-							<Tab eventKey='unanswered' title='Unanswered Questions'>
+							<Tab
+								eventKey='unanswered'
+								title='Unanswered Questions'
+								className='fw-bold'>
 								<Container className='answered-questions'>
 									<Row className='m-auto w-100'>
 										<Col>
