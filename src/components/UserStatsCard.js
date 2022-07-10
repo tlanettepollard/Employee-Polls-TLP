@@ -18,7 +18,7 @@ const UserStatsCard = (props) => {
 						<Card bg='light' className='m-3'>
 							<Card.Header className='text-left m-2 p-2 bg-info'>
 								<Avatar avatarURL={avatarURL} className='mr-2' />
-								{name}
+								<span className='ms-2'>{name}</span>
 							</Card.Header>
 							<Card.Body className='d-flex justify-content-center'>
 								<Card.Text>

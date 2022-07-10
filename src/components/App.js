@@ -9,9 +9,7 @@ import Navigation from './Navigation';
 import Home from './Home';
 import NewPoll from './NewPoll';
 import QuestionPage from './QuestionPage';
-//import QuestionPageSub from './QuestionPageSub';
 import Leaderboard from './Leaderboard';
-//import LeaderboardSub from './Leaderboard';
 import PageNotFound from './PageNotFound';
 import '../App.css';
 
@@ -37,6 +35,7 @@ const App = (props) => {
 					<Route path='*' element={<PageNotFound />} />
 					<Route exact path='/login' element={<Login />} />
 				</Routes>
+				
 			</div>
 		</Fragment>
 	);

@@ -9,6 +9,7 @@ import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Image from 'react-bootstrap/Image';
 import Button from 'react-bootstrap/Button';
+import Footer from './Footer';
 
 const withRouter = (Component) => {
 	const ComponentWithRouterProp = (props) => {
@@ -55,7 +56,7 @@ const QuestionPage = (props) => {
 
 	return (
 		<Fragment>
-			<Container fluid className='my-5 p-3'>
+			<Container fluid className='my-2 p-3'>
 				<Image
 					src={avatarURL}
 					alt='user-avatar'
@@ -70,25 +71,29 @@ const QuestionPage = (props) => {
 					<Container fluid>
 						<Row className='justify-content-center'>
 							<Col xs={12} md={6}>
-								<Card className='my-3 p-4'>
-									<Card.Header className='text-center display-6'>
+								<Card className='my-3 p-4 border-info border border-3'>
+									<Card.Header className='text-center display-6 bg-info'>
 										Would you rather...
 									</Card.Header>
 									<Card.Body className='d-flex-column align-items-center'>
 										<p className='fw-bold'>{optionOneText}</p>
-										<Button onClick={() => handleClick('optionOne')}>
+										<Button
+											onClick={() => handleClick('optionOne')}
+											className='btn-warning'>
 											Choose Option 1
 										</Button>
 										<hr />
 										<p className='fw-bold'>{optionTwoText}</p>
-										<Button onClick={() => handleClick('optionTwo')}>
+										<Button
+											onClick={() => handleClick('optionTwo')}
+											className='btn-warning'>
 											Choose Option 2
 										</Button>
 									</Card.Body>
 								</Card>
 								<Container fluid className='my-5 d-flex justify-content-center'>
 									<Link to='/'>
-										<Button variant='primary' className=' btn-lg p-2'>
+										<Button variant='primary' className=' btn-lg p-2 btn-warning'>
 											Back to Home
 										</Button>
 									</Link>
@@ -141,6 +146,7 @@ const QuestionPage = (props) => {
 					</Container>
 				)}
 			</Container>
+			<Footer />
 		</Fragment>
 	);
 };
