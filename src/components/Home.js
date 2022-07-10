@@ -12,14 +12,14 @@ const Home = (props) => {
 
 	return (
 		<Fragment>
-			<Container fluid>
+			<Container fluid className='m-auto w-75 pt-5'>
 				<Row>
 					<Col>
 						<Tabs>
 							<Tab
 								eventKey='unanswered'
 								title='Unanswered Questions'
-								className='fw-bold'>
+								className='border border-1 border-info'>
 								<Container className='answered-questions'>
 									<Row className='m-auto w-100'>
 										<Col>
@@ -38,7 +38,10 @@ const Home = (props) => {
 									</Row>
 								</Container>
 							</Tab>
-							<Tab eventKey='answered' title='Answered Questions'>
+							<Tab
+								eventKey='answered'
+								title='Answered Questions'
+								className='border border-1 border-info'>
 								<Container className='unanswered-questions'>
 									<Row className='m-auto w-100'>
 										<Col>

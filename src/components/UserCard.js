@@ -20,8 +20,8 @@ const UserCard = (props) => {
 			<Container>
 				<Row className='justify-content-center'>
 					<Col xs={12} md={6}>
-						<Card bg='light' border='primary' className='m-3'>
-							<Card.Header className='text-left m-2 p-2'>
+						<Card bg='light' className='border border-2 border-info m-3'>
+							<Card.Header className='text-left m-2 p-2 bg-info'>
 								<Avatar avatarURL={author.avatarURL} className='m-2' />
 								{name}
 							</Card.Header>
@@ -29,11 +29,11 @@ const UserCard = (props) => {
 								<Card.Text>{optionOne.text.slice(0, 50)}...?</Card.Text>
 
 								<Link to={`/questions/${id}`}>
-									<Button variant='primary'>Show Details</Button>
+									<Button variant='warning'>Show Details</Button>
 								</Link>
 							</Card.Body>
-							<Card.Footer>
-								<small className='text-muted'>{formatDate(timestamp)}</small>
+							<Card.Footer className='bg-info'>
+								<small className='text-muted '>{formatDate(timestamp)}</small>
 							</Card.Footer>
 						</Card>
 					</Col>

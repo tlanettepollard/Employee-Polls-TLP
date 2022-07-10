@@ -7,7 +7,6 @@ import Col from 'react-bootstrap/Col';
 import Avatar from './Avatar';
 
 const UserStatsCard = (props) => {
-
 	const { user } = props;
 	const { name, avatarURL, answers, questions } = user;
 
@@ -17,7 +16,7 @@ const UserStatsCard = (props) => {
 				<Row className='justify-content-center'>
 					<Col xs={12} md={6}>
 						<Card bg='light' className='m-3'>
-							<Card.Header>
+							<Card.Header className='text-left m-2 p-2 bg-info'>
 								<Avatar avatarURL={avatarURL} className='mr-2' />
 								{name}
 							</Card.Header>

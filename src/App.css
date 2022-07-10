@@ -4,7 +4,7 @@
 *::before,
 *::after {
 	box-sizing: border-box;
-	outline: 1px solid black;
+	//outline: 1px solid black;
 }
 
 html {
@@ -57,3 +57,4 @@ li {
 .user-dropdown {
 	font-size: 1rem;
 }
+

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
 import companyLogo from '../assets/companyavatar.png';
 import { handleLogoutAction } from '../actions/authedUser';
@@ -48,8 +49,10 @@ const Navigation = (props) => {
 					/>
 				</Navbar.Brand>
 				<Navbar.Toggle aria-controls='responsive-navbar-nav' />
-				<Navbar.Collapse id='responsive-navbar-nav'>
-					<Nav className='me-auto' defaultActiveKey={location.home}>
+				<Navbar.Collapse
+					id='responsive-navbar-nav'
+					className='justify-content-md-between'>
+					<Nav className='w-auto' defaultActiveKey={location.home}>
 						<Nav.Item as='li'>
 							<Nav.Link as={Link} to='/' active>
 								Home
@@ -71,8 +74,11 @@ const Navigation = (props) => {
 						{/*<Avatar avatarURL={user.avatarURL} className='mr-2' />*/}
 						{/* Problem with image rendering */}
 						{authedUser && (
-							<Nav.Link className='w-75' as={Link} to='#'>
-								<Container className='d-inline-flex justify-content-start align-items-center'>
+							<Nav.Link
+								className='w-75 d-flex align-items-center'
+								as={Link}
+								to='#'>
+								<Container className='m-auto d-flex align-items-center'>
 									<div>
 										<Image
 											src={avatar}
@@ -95,8 +101,8 @@ const Navigation = (props) => {
 							as={Link}
 							to='#'
 							onClick={handleClick}
-							className='d-flex align-contents-center'>
-							<span className='m-2 p-2'>Sign Out</span>
+							className='d-flex align-contents-center fs-6 text-center p-2'>
+							<Button className='btn-warning'>Sign Out</Button>
 						</Nav.Link>
 					</Nav>
 				</Navbar.Collapse>
