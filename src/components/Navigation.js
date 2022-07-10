@@ -54,17 +54,17 @@ const Navigation = (props) => {
 					className='justify-content-md-between'>
 					<Nav className='w-auto' defaultActiveKey={location.home}>
 						<Nav.Item as='li'>
-							<Nav.Link as={Link} to='/' active>
+							<Nav.Link as={Link} to='/' active className='m-2 nav-link'>
 								Home
 							</Nav.Link>
 						</Nav.Item>
 						<Nav.Item>
-							<Nav.Link as={Link} to='/leaderboard' className='nav-link'>
+							<Nav.Link as={Link} to='/leaderboard' className='m-2'>
 								Leaderboard
 							</Nav.Link>
 						</Nav.Item>
 						<Nav.Item>
-							<Nav.Link as={Link} to='/new' className='nav-link'>
+							<Nav.Link as={Link} to='/new' className='m-2'>
 								New Question
 							</Nav.Link>
 						</Nav.Item>
@@ -87,7 +87,7 @@ const Navigation = (props) => {
 											roundedCircle
 											width='40'
 											height='40'
-											className='m-2'
+											className='m-2 border border-dark'
 										/>
 									</div>
 									<div>

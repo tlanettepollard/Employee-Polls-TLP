@@ -7,6 +7,8 @@ import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
+import Image from 'react-bootstrap/Image';
+import companyLogo from '../assets/companyavatar.png';
 
 const NewPoll = ({ dispatch, authedUser }) => {
 	const navigate = useNavigate();
@@ -42,20 +44,35 @@ const NewPoll = ({ dispatch, authedUser }) => {
 
 	return (
 		<Fragment>
-			<Container>
+			<Container fluid className='my-4 p-3'>
+				<Image
+					src={companyLogo}
+					alt='user-avatar'
+					roundedCircle
+					className='mx-auto d-block'
+					width='100'
+					height='100'
+				/>
+				<h2 className='text-center my-2 p-3 fw-bold'>
+					{' '}
+					Create a New Poll Question{' '}
+				</h2>
+			</Container>
+			<Container className='w-75  d-flex justify-content-center align-items-center'>
 				{success && <h1 className={'Success'}>Name Submitted!</h1>}
 				{error && <h1 className={'Error'}>Please enter both options.</h1>}
-				<Card>
-					<Card.Header as='h2' className='text-center'>
+				<Card className='m-5 border-info'>
+					<Card.Header as='h3' className='text-center bg-info fw-bold'>
 						Would You Rather...
 					</Card.Header>
 					<Card.Body>
-						<p className='text-center'>Create Your Own Poll</p>
 						<Form
 							name='question-form'
-							className='new-question'
+							className='new-question row'
 							onSubmit={handleSubmit}>
-							<Form.Label className='large-label' htmlFor='optionOneValue'>
+							<Form.Label
+								className='large-label p-2 fw-bold'
+								htmlFor='optionOneValue'>
 								First Choice
 								<InputGroup>
 									<Form.Control
@@ -63,10 +80,13 @@ const NewPoll = ({ dispatch, authedUser }) => {
 										onChange={handleChangeOptionOne}
 										value={optionOne}
 										name='optionOneValue'
+										className='border-info'
 									/>
 								</InputGroup>
 							</Form.Label>
-							<Form.Label className='large-label' htmlFor='optionTwoValue'>
+							<Form.Label
+								className='large-label p-2 fw-bold'
+								htmlFor='optionTwoValue'>
 								Second Choice
 								<InputGroup>
 									<Form.Control
@@ -74,10 +94,17 @@ const NewPoll = ({ dispatch, authedUser }) => {
 										onChange={handleChangeOptionTwo}
 										value={optionTwo}
 										name='optionTwoValue'
+										className='border-info'
 									/>
 								</InputGroup>
 							</Form.Label>
-							<Button type='submit'>Submit</Button>
+							<div className='p-3'>
+								<Button
+									type='submit'
+									className='col-6 offset-3 p-2 btn-warning'>
+									Submit
+								</Button>
+							</div>
 						</Form>
 					</Card.Body>
 				</Card>
