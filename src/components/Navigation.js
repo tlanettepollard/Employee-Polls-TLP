@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
 import companyLogo from '../assets/companyavatar.png';
 import { handleLogoutAction } from '../actions/authedUser';
@@ -36,14 +37,13 @@ const Navigation = (props) => {
 			<Navbar
 				collapseOnSelect
 				expand='md'
-				bg='light'
 				variant='light'
-				className='p-3'>
+				className='bg-info p-3'>
 				<Navbar.Brand as={Link} to='/' className='p-3'>
 					<img
 						src={companyLogo}
-						width='30'
-						height='30'
+						width='40'
+						height='40'
 						className='d-inline-block align-top'
 						alt='company logo'
 					/>
@@ -51,34 +51,34 @@ const Navigation = (props) => {
 				<Navbar.Toggle aria-controls='responsive-navbar-nav' />
 				<Navbar.Collapse
 					id='responsive-navbar-nav'
-					className='justify-content-between'>
-					<Nav
-						className='me-auto w-50'
-						activeKey={location.home}
-						variant='pills'>
+					className='justify-content-md-between'>
+					<Nav className='w-auto' defaultActiveKey={location.home}>
 						<Nav.Item as='li'>
-							<Nav.Link as={Link} to='/'>
+							<Nav.Link as={Link} to='/' active>
 								Home
 							</Nav.Link>
 						</Nav.Item>
 						<Nav.Item>
-							<Nav.Link as={Link} to='/leaderboard'>
+							<Nav.Link as={Link} to='/leaderboard' className='nav-link'>
 								Leaderboard
 							</Nav.Link>
 						</Nav.Item>
 						<Nav.Item>
-							<Nav.Link as={Link} to='/new'>
+							<Nav.Link as={Link} to='/new' className='nav-link'>
 								New Question
 							</Nav.Link>
 						</Nav.Item>
 					</Nav>
 
-					<Nav className='justify-content-end w-50'>
+					<Nav className='w-auto'>
 						{/*<Avatar avatarURL={user.avatarURL} className='mr-2' />*/}
 						{/* Problem with image rendering */}
 						{authedUser && (
-							<Nav.Link className='w-75' as={Link} to='#'>
-								<Container className='d-inline-flex justify-content-center align-items-center'>
+							<Nav.Link
+								className='w-75 d-flex align-items-center'
+								as={Link}
+								to='#'>
+								<Container className='m-auto d-flex align-items-center'>
 									<div>
 										<Image
 											src={avatar}
@@ -91,18 +91,18 @@ const Navigation = (props) => {
 										/>
 									</div>
 									<div>
-										<span className='m-2 p-2'>{name}</span>
+										<span className='ms-3'>{name}</span>
 									</div>
 								</Container>
 							</Nav.Link>
 						)}
-						
+
 						<Nav.Link
 							as={Link}
 							to='#'
 							onClick={handleClick}
-							className='d-flex align-contents-center'>
-							<span className='m-2 p-2'>Sign Out</span>
+							className='d-flex align-contents-center fs-6 text-center p-2'>
+							<Button className='btn-warning'>Sign Out</Button>
 						</Nav.Link>
 					</Nav>
 				</Navbar.Collapse>
@@ -119,7 +119,4 @@ const mapStateToProps = ({ authedUser, users }) => {
 	};
 };
 
-
 export default withRouter(connect(mapStateToProps)(Navigation));
-
-
