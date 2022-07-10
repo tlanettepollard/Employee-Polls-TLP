@@ -23,11 +23,9 @@ export function addQuestion(question) {
 export function addAnswer({ qid, answer, authedUser }) {
 	return {
 		type: ADD_ANSWER,
-		answerInfo: {
-			qid,
-			answer,
-			authedUser,
-		},
+		qid,
+		answer,
+		authedUser,
 	};
 }
 
@@ -46,7 +44,7 @@ export function handleSaveQuestion(optionOne, optionTwo) {
 				dispatch(hideLoading());
 			})
 			.catch(function () {
-				console.log('denied');
+				console.log('rejected');
 			});
 	};
 }
@@ -54,15 +52,15 @@ export function handleSaveQuestion(optionOne, optionTwo) {
 export function handleSaveAnswer(qid, answer) {
 	return (dispatch, getState) => {
 		const { authedUser } = getState();
+		dispatch(showLoading());
 		return saveQuestionAnswer({
 			authedUser,
 			qid,
-			answer
-		})
-			.then(() => {
-				dispatch(addQuestion({ authedUser, qid, answer }));
-				dispatch(saveAnswerToUser({ authedUser, qid, answer }))
-				dispatch(hideLoading());
-		})
-	}
+			answer,
+		}).then(() => {
+			dispatch(addAnswer({ authedUser, qid, answer }));
+			dispatch(saveAnswerToUser({ authedUser, qid, answer }));
+			dispatch(hideLoading());
+		});
+	};
 }

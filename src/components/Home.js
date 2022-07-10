@@ -25,7 +25,7 @@ const Home = (props) => {
 														<UserCard
 															key={question.id}
 															id={question.id}
-															question={question}
+															question={question.id}
 															user={users[question.author]}
 															//unanswered={true}
 														/>
@@ -44,7 +44,7 @@ const Home = (props) => {
 														<UserCard
 															key={question.id}
 															id={question.id}
-															question={question}
+															question={question.id}
 															user={users[question.author]}
 															//answered={true}
 														/>
