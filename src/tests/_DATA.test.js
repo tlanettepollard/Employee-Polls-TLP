@@ -3,7 +3,7 @@ import {
 	_saveQuestionAnswer,
 	_getQuestions,
 } from '../utils/_DATA';
-//import { formatDate } from '../utils/helpers';
+
 
 jest.setTimeout(10000);
 
@@ -21,8 +21,8 @@ describe('_saveQuestion', () => {
 		expect(result.author).toBe(question.author);
 		expect(result.id).not.toBeNull();
 		expect(result.timestamp).not.toBeNull();
-		expect(result.optionOneText).toEqual(question.optionOneText);
-		expect(result.optionTwoText).toEqual(question.optionTwoText);
+		expect(result.optionOne.text).toEqual(question.optionOneText);
+		expect(result.optionTwo.text).toEqual(question.optionTwoText);
 	});
 
 	it('will errors show if the wrong info is passed', async () => {
@@ -48,13 +48,12 @@ describe('_getQuestions', () => {
 //_saveQuestionAnswer() test
 describe('_saveQuestionAnswer', () => {
 	it('will be true if successful', async () => {
-		const object = {
-			answer: 'optionOne',
-			authedUser: 'sarahedo',
-			qid: '8xf0y6ziyjabvozdd253nd',
-			type: 'ANSWER_QUESTION',
-		};
-		await expect(_saveQuestionAnswer(object)).resolves.toBe(true);
+		const authedUser = 'sarahedo';
+		const qid = '8xf0y6ziyjabvozdd253nd';
+		const answer = 'optionOne';
+		const update = { authedUser, qid, answer };
+
+		await expect(_saveQuestionAnswer(update)).resolves.toBe(true);
 	});
 
 	it('will return an error if unsuccessful', async () => {
