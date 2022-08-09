@@ -35,7 +35,7 @@ const Login = ({ users, dispatch }) => {
 							<Image
 								src={companyLogo}
 								alt='company logo'
-								className='w-80 p-5'
+								className='w-50 mx-auto p-5'
 								fluid
 							/>
 
@@ -46,7 +46,7 @@ const Login = ({ users, dispatch }) => {
 											as='select'
 											size='lg'
 											aria-label='Select a User'
-											className='p-2'
+											className='p-2 my-3 border-info'
 											onChange={(e) => setUserSelected(e.target.value)}
 											value={userSelected}>
 											<option value='none' disabled className='user-dropdown'>

@@ -4,7 +4,7 @@
 *::before,
 *::after {
 	box-sizing: border-box;
-	outline: 1px solid black;
+	//outline: 1px solid black;
 }
 
 html {
@@ -58,3 +58,6 @@ li {
 	font-size: 1rem;
 }
 
+.footer {
+	background-color: #e9dac1;
+}

@@ -6,13 +6,14 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import UserCard from './UserCard';
+import Footer from './Footer';
 
 const Home = (props) => {
 	const { answered, unanswered, users } = props;
 
 	return (
 		<Fragment>
-			<Container fluid className='m-auto w-75 pt-5'>
+			<Container fluid className='m-auto w-75 p-5'>
 				<Row>
 					<Col>
 						<Tabs>
@@ -64,6 +65,7 @@ const Home = (props) => {
 					</Col>
 				</Row>
 			</Container>
+			<Footer />
 		</Fragment>
 	);
 };
